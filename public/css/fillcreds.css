@@ -1,0 +1,141 @@
+body{
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+ }
+ 
+ .main-body{
+    width: 100%;
+    height: 100%;
+    background-image: linear-gradient(135deg, rgba(0, 0, 0,1), rgba(16, 28, 95, 0.788), rgba(0, 0, 0,1)),url(backlogin.png);
+    background-position: center;
+    background-size: cover;
+    position: absolute;
+ }
+ .logo-container{
+    left: 50%;
+    right: 50%;
+    position: relative;
+    translate: -30% 0;
+    max-width: 450px;
+ }
+ .logo-container img{
+   height: 150px;
+ }
+ .form-box{
+    max-width: 600px;
+    height: 700px;
+    margin-left:auto;
+    margin-right: auto;
+    position: relative;
+    margin-top: 10px;
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 20px;
+    border:1px solid rgba(255, 255, 255, 0.18);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+    border-radius: 30px;
+    overflow: hidden;
+ }
+ .cal-calc{
+    display: grid;
+    grid-template-rows: 70px 1fr 160px;
+    height: 100%;
+ }
+ .cal-calc-title{
+    border-bottom: solid rgba(255, 255, 255, 0.575) 1px;
+    color: rgba(255, 255, 255, 0.774);
+    font-size: 35px;
+    padding-top: 15px;
+    padding-left: 20px;
+    font-weight: bold;
+ }
+ .inputs-calc{
+    display: grid;
+    align-items: center;
+    margin: 0 20px;
+    margin-top: 10px;
+ }
+ .var-cont{
+    display: grid;
+    grid-template-columns: 1fr 160px;
+ }
+ .var-cont input{
+    display: block;
+    background: rgba(255, 255, 255, 0.075);
+    border-radius: 20px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(12.7px);
+    -webkit-backdrop-filter: blur(12.7px);
+    border: 1px solid rgba(255, 255, 255, 0.144);
+    height: 50px;
+    width: 94%;
+    padding-left: 20px;
+    font-size: 25px;
+    color: black;
+ }
+ .var-cont input::placeholder{
+    color: black;
+ }
+ .var-cont select{
+    background: rgba(255, 255, 255, 0.075);
+    border-radius: 20px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(12.7px);
+    -webkit-backdrop-filter: blur(12.7px);
+    border: 1px solid rgba(255, 255, 255, 0.144);
+    height: 50px;
+    width: 100%;
+    padding-left: 20px;
+    font-size: 25px;
+ }
+ .var-cont span{
+    color: rgba(255, 255, 255, 0.644);
+    font-size: 25px;
+    margin-left: 20px;
+    padding-top: 15px;
+ }
+ .result-cont{
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    margin: 20px;
+    row-gap: 15px;
+ }
+ #add-to-goal{
+    background: rgba(255, 255, 255, 0.678);
+    border-radius: 15px;
+    border: none;
+    font-size: 25px;
+    font-weight: bold;
+ }
+ .basics{
+    display: grid;
+ }
+ .basics button{
+    background: rgba(255, 230, 0, 0.836);
+    border-radius: 15px;
+    border: none;
+    font-size: 30px;
+    font-weight: bold;
+    width: 100%;
+ }
+ .basics input::placeholder{
+    color: black;
+ }
+ .result-cont form{
+    position: relative;
+ }
+ .result-cont-add{
+    display: grid;
+    grid-template-columns: 1.6fr 1fr;
+    column-gap: 15px;
+ }
+ #calcres{
+    background: rgba(255, 255, 255, 0.466);
+    border-radius: 15px;
+    border: none;
+    padding-left: 15px;
+    width: 200px;
+    font-size: 22px;
+ }

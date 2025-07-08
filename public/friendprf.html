@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+   <link href="/css/friendprf.css" rel="stylesheet">
+</head>
+<body>
+   <div class="main">
+      <div class="sidebar">
+         <div class="logo"><img src="/icons/logopic.png" id="logo"></div>
+         <div class="options">
+            <form action="/home" method="get"><button id="home"><img src="/icons/home.png"></button></form>
+            <form action="/workout" method="get"><button id="workout-plan"><img src="/icons/workout.png"></button></form>
+            <form action="/diet" method="get"><button id="diet-plan"><img src="/icons/meals.png"></button></form>
+            <form action="/settings" method="get"><button id="settings"><img src="/icons/settings.png"></button></form>         
+         </div>
+      </div>
+      <div class="interface">
+         <div class="main-cont">
+            <div class="upper">
+               <div class="user-name-cont">
+                  <h1><span style="color: rgb(255, 230, 0); font-weight: normal;">This is</span> <span class="username"></span>'s Profile</h1>
+               </div>
+               <form class="back-btn-cont" action="/" method="get">
+                  <button>&#10554 Back</button>
+               </form>
+            </div>
+            <div class="lower">
+               <div class="left">
+                  <div class="prf-img-cont">
+                     <img src="/icons/blank.png" class="prf-img">
+                  </div>
+                  <div class="friends-cont">
+                     <div class="nr-friends">
+                        <span style="color: rgb(255, 230, 0);">Friends:&nbsp</span>
+                        <span class="fr-nr" style="font-weight: bold;"></span>
+                     </div>
+                     <div class="delete-friend-cont">
+                        <button>Remove Friend</button>
+                     </div>
+                  </div>
+               </div>
+               <div class="right">
+                  <h1>Mutual Friends</h1>
+                  <div class="common-cont"></div>
+               </div>
+            </div>
+         </div>
+         <div class="user-stats-cont">
+            <h1><span style="color: rgb(255, 230, 0);">User</span> Statistics</h1>
+            <div class="upper-stat">
+               <div class="wei-cal-cont">
+                  <div class="wei-cont">
+                     <span>Weight:&nbsp </span>
+                     <span class="wei-inp" style="color: rgb(255, 230, 0); font-weight: bold ;">69 </span>
+                     <span>&nbspkg</span>
+                  </div>
+                  <div class="cal-cont">
+                     <span>Calories:&nbsp </span>
+                     <span class="cal-inp" style="color: rgb(255, 230, 0); font-weight: bold ;">69 </span>
+                     <span>&nbspkcal</span>
+                  </div>
+               </div>
+               <div class="macro-cont">
+                  <div class="pro-cont">
+                     <span>Protein:&nbsp</span>
+                     <span class="pro-inp" style="color: rgb(255, 230, 0); font-weight: bold;"></span>
+                     <span>&nbspg</span>
+                  </div>
+                  <div class="carb-cont">
+                     <span>Carbs:&nbsp</span>
+                     <span class="carb-inp" style="color: rgb(255, 230, 0); font-weight: bold;"></span>
+                     <span>&nbspg</span>
+                  </div>
+                  <div class="fat-cont">
+                     <span>Fats:&nbsp</span>
+                     <span class="fat-inp" style="color: rgb(255, 230, 0); font-weight: bold;"></span>
+                     <span>&nbspg</span>
+                  </div>
+               </div>
+            </div>
+            <div class="week-graph">
+               <div class="bar-cont mon-cont">
+                  <div class="bar mon">
+                     <div class="cal-bar mon-cal"></div>
+                     <div class="wei-bar mon-wei"></div>
+                  </div>
+                  <span>Mon</span>
+               </div>
+               <div class="bar-cont tue-cont">
+                  <div class="bar tue">
+                     <div class="cal-bar tue-cal"></div>
+                     <div class="wei-bar tue-wei"></div>
+                  </div>
+                  <span>Tue</span>
+               </div>
+               <div class="bar-cont wed-cont">
+                  <div class="bar wed">
+                     <div class="cal-bar wed-cal"></div>
+                     <div class="wei-bar wed-wei"></div>
+                  </div>
+                  <span>Wed</span>
+               </div>
+               <div class="bar-cont thu-cont">
+                  <div class="bar thu">
+                     <div class="cal-bar thu-cal"></div>
+                     <div class="wei-bar thu-wei"></div>
+                  </div>
+                  <span>Thu</span>
+               </div>
+               <div class="bar-cont fri-cont">
+                  <div class="bar fri">
+                     <div class="cal-bar fri-cal"></div>
+                     <div class="wei-bar fri-wei"></div>
+                  </div>
+                  <span>Fri</span>
+               </div>
+               <div class="bar-cont sat-cont">
+                  <div class="bar sat">
+                     <div class="cal-bar sat-cal"></div>
+                     <div class="wei-bar sat-wei"></div>
+                  </div>
+                  <span>Sat</span>
+               </div>
+               <div class="bar-cont sun-cont">
+                  <div class="bar sun">
+                     <div class="cal-bar sun-cal"></div>
+                     <div class="wei-bar sun-wei"></div>
+                  </div>
+                  <span>Sun</span>
+               </div>
+            </div>
+            <div class="training-plan">
+               <div class="wrk-overview">
+                  <div class="wrk-type">
+                     <h2>Workout Type</h2>
+                     <p class="wrk-type-p"></p>
+                  </div>
+                  <div class="wrk-length">
+                     <h2>Workout Length</h2>
+                     <p></p>
+                  </div>
+                  <form class="sync-cont" action="/syncWrk" method="post">
+                     <input type="text" name="frName" style="position: absolute; visibility: hidden;" class="frName-sync">
+                     <button>Sync Workout</button>
+                  </form>
+               </div>
+               <div class="wrk-plan">
+                  <h2><span class="username-cont"></span>'s Workout</h2>
+                  <div class="wrk-cont"></div>
+               </div>
+            </div>
+         </div>
+         
+      </div>
+      
+   </div>
+   <script type="module" src="/js/friendprf.js"></script>
+</body>
+</html>

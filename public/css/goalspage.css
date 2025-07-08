@@ -1,0 +1,902 @@
+body{
+   margin: 0;
+   padding: 0;
+   font-family: Arial;
+}
+
+.main{
+   width: 100%;
+   height: 100%;
+   background-image: linear-gradient(90deg, rgba(0, 0, 0,1), rgba(16, 28, 95, 0.788)),url(backlogin.png);
+   background-position: center;
+   background-size: cover;
+   position: absolute;
+   display: grid;
+   grid-template-columns: 100px 1fr;
+   column-gap: 20px;
+   overflow: hidden;
+   overflow: auto;
+}
+.interface{
+   display: grid;
+   grid-template-rows: 200px 1fr;
+}
+.sidebar{
+   background-color: rgb(0, 0, 0);
+   margin-top: 20px;
+   margin-left: 20px;
+   margin-bottom: 20px;
+}
+.sidebar-settings{
+   margin: 20px;
+   display: inline-block;
+}
+.sidebar-opts{
+   background: rgba(255, 255, 255, 0.075);
+   border-radius: 20px;
+   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+   backdrop-filter: blur(12.7px);
+   -webkit-backdrop-filter: blur(12.7px);
+   border: 1px solid rgba(255, 255, 255, 0.144);
+   padding: 10px;
+   height: 60px;
+   width: 98%;
+   display: flex;
+   justify-content: space-between;
+}
+.header-bts{
+   display: grid;
+   grid-template-columns: 1fr 1fr;
+   column-gap: 10px;
+}
+.sidebar-title{
+   height: 60px;
+   margin-left: 13px;
+   margin-top: 10px;
+   margin-bottom: 10px;
+   color: rgb(255, 230, 0);
+   font-size: 30px;
+}
+.sidebar-title span{
+   font-size: 32px;
+   font-weight: bold;
+   color: white;
+}
+.opt-button-container{
+   height: 60px;
+   width: 100%;
+   display: grid;
+}
+.opt-button-container button{
+   height: 55px;
+   text-align: left;
+   font-size: 25px;
+   color: white;
+   background-color: rgba(255, 255, 255, 0.014);
+   border-radius: 16px;
+   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+   backdrop-filter: blur(12.7px);
+   -webkit-backdrop-filter: blur(12.7px);
+   border: 1px solid rgba(255, 255, 255, 0.137);
+   transition: background-color 0.3s;
+   display: flex;
+   justify-content: start;
+   align-items: center;
+   padding-left: 10px;
+}
+.opt-button-container img{
+   height: 40px;
+   margin-right: 10px;
+}
+.opt-button-container button:hover{
+   background-color: rgba(255, 255, 255, 0.07);
+}
+.opt-button-container button:active{
+   background-color: rgba(255, 255, 255, 0.09);
+}
+#logo{
+   height: 70px;
+   margin-left: 3px;
+   margin-top: 15px;
+}
+.options{
+   display: grid;
+   grid-template-columns: 1fr;
+   margin-top: 20px;
+}
+.sidebar button{
+   background-color: transparent;
+   border: none;
+   cursor: pointer;
+   margin-top: 23px;
+   height: 80px;
+   width: 80px;
+   border-radius: 30px;
+   transition: background-color 0.3s;
+}
+
+.options img{
+   height: 40px;
+}
+.sidebar button:hover{
+   background-color: rgb(46, 30, 119);
+}
+.sidebar button:active{
+   background-color: rgb(60, 43, 138);
+}
+.interface{
+   display: grid;
+   grid-template-rows: 90px 1fr;
+   row-gap: 20px;
+   grid-template-columns: 1fr;
+   height: 890px;
+   column-gap: 10px;
+}
+.opt-button-container a{
+   color: white;
+   text-decoration: none;
+}
+.opt-button-container a:hover{
+   text-decoration: underline;
+}
+.goal-input-data{
+   width: 97%;
+   margin: 20px;
+   display: inline-block;
+   display: grid;
+   grid-template-columns: 2fr 1fr;
+   column-gap: 25px;
+}
+.user-data{
+   background: rgba(255, 255, 255, 0.075);
+   border-radius: 20px;
+   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+   backdrop-filter: blur(12.7px);
+   -webkit-backdrop-filter: blur(12.7px);
+   border: 1px solid rgba(255, 255, 255, 0.144);
+   display: grid;
+   grid-template-columns: 1fr 1fr;
+}
+.left{
+   height: 100%;
+   display: grid;
+   grid-template-rows: 1fr 1fr;
+}
+.secondary{
+   background: rgba(255, 255, 255, 0.075);
+   border-radius: 20px;
+   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+   backdrop-filter: blur(12.7px);
+   -webkit-backdrop-filter: blur(12.7px);
+   border: 1px solid rgba(255, 255, 255, 0.144);
+   display: grid;
+   grid-template-rows: 70px 1fr 160px;
+}
+
+.var-cont{
+   display: grid;
+   grid-template-columns: 1fr 160px;
+}
+.var-cont input{
+   display: block;
+   background: rgba(255, 255, 255, 0.075);
+   border-radius: 20px;
+   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+   backdrop-filter: blur(12.7px);
+   -webkit-backdrop-filter: blur(12.7px);
+   border: 1px solid rgba(255, 255, 255, 0.144);
+   height: 60px;
+   width: 94%;
+   padding-left: 20px;
+   font-size: 25px;
+   color: black;
+}
+.var-cont input::placeholder{
+   color: black;
+}
+.var-cont select{
+   background: rgba(255, 255, 255, 0.075);
+   border-radius: 20px;
+   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+   backdrop-filter: blur(12.7px);
+   -webkit-backdrop-filter: blur(12.7px);
+   border: 1px solid rgba(255, 255, 255, 0.144);
+   height: 60px;
+   color: white;
+   width: 100%;
+   padding-left: 20px;
+   font-size: 25px;
+}
+.var-cont span{
+   color: rgba(255, 255, 255, 0.644);
+   font-size: 25px;
+   margin-left: 20px;
+   padding-top: 15px;
+}
+
+#add-to-goal{
+   background: rgba(255, 255, 255, 0.678);
+   border-radius: 15px;
+   border: none;
+   font-size: 25px;
+   font-weight: bold;
+}
+.basics{
+   display: grid;
+}
+.basics button{
+   background: rgba(255, 230, 0, 0.836);
+   border-radius: 15px;
+   border: none;
+   font-size: 30px;
+   font-weight: bold;
+   width: 100%;
+}
+.basics input::placeholder{
+   color: black;
+}
+
+#calcres{
+   background: rgba(255, 255, 255, 0.466);
+   border-radius: 15px;
+   border: none;
+   padding-left: 15px;
+   width: 150px;
+   font-size: 22px;
+}
+.wei-part{
+   height: 90%;
+   display: grid;
+   grid-template-rows: 70px 1fr;
+   background: rgba(255, 255, 255, 0.075);
+   border-radius: 15px;
+   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+   backdrop-filter: blur(12.7px);
+   -webkit-backdrop-filter: blur(12.7px);
+   margin: 20px;
+}
+.wei-tit{
+   font-size: 35px;
+   font-weight: bold;
+   border-bottom: solid 1px white;
+   color: white;
+   padding-top: 12px;
+   padding-left: 20px;
+}
+.wei-data{
+   display: grid;
+   grid-template-rows: 1fr 1fr 1fr;
+   row-gap: 20px;
+   padding: 20px;
+}
+.data-input{
+   display: flex;
+   justify-content: start;
+   align-items: center;
+}
+.data-input input{
+   background: rgba(255, 255, 255, 0.075);
+   border-radius: 20px;
+   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+   backdrop-filter: blur(12.7px);
+   -webkit-backdrop-filter: blur(12.7px);
+   border: 1px solid rgba(255, 255, 255, 0.144);
+   height: 100%;
+   width: 190px;
+   font-size: 25px;
+   color: rgba(255, 255, 255, 0.829);
+   padding-left: 15px;
+}
+.data-input span{
+   color: rgba(255, 255, 255, 0.829);
+   font-size: 20px;
+   margin-left: 15px;
+}
+.goalsel{
+   background: rgba(255, 255, 255, 0.075);
+   border-radius: 20px;
+   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+   backdrop-filter: blur(12.7px);
+   -webkit-backdrop-filter: blur(12.7px);
+   border: 1px solid rgba(255, 255, 255, 0.144);
+   height: 100%;
+   width: 210px;
+   font-size: 23px;
+}
+.actsel{
+   background: rgba(255, 255, 255, 0.075);
+   border-radius: 20px;
+   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+   backdrop-filter: blur(12.7px);
+   -webkit-backdrop-filter: blur(12.7px);
+   border: 1px solid rgba(255, 255, 255, 0.144);
+   height: 100%;
+   width: 210px;
+   font-size: 20px;
+}
+.right{
+   height: 100%;
+   display: grid;
+   grid-template-rows: 4fr 1fr;
+   padding: 20px;
+   padding-left: 0;
+   padding-bottom: 0;
+}
+.calculators{
+   display: grid;
+   grid-template-rows: 1.2fr 2fr;
+}
+.cal-calc select{
+   display: inline-block;
+   background: rgba(255, 255, 255, 0.075);
+   border-radius: 10px;
+   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+   backdrop-filter: blur(12.7px);
+   -webkit-backdrop-filter: blur(12.7px);
+   border: 1px solid rgba(255, 255, 255, 0.144);
+   color: white;
+   font-size: 20px;
+   width: 100%;
+   padding: 10px;
+   padding-left: 15px;
+   margin-bottom: 20px;
+}
+.left select option{
+   background-color: rgb(21,25,55);
+}
+.left select{
+   color: white;
+   padding-left: 5px;
+}
+.cal-calc select option{
+   background-color: rgb(21,25,55);
+}
+.cal-calc h1, .bmi-calc h1{
+   font-size: 28px;
+   color: rgba(255, 255, 255, 0.904);
+}
+.cal-calc div{
+   display: grid;
+   grid-template-columns: 1fr 1fr;
+   column-gap: 10px;
+}
+.result-cont{
+   padding: 10px;
+   display: grid;
+   background: rgba(255, 255, 255, 0.075);
+   border-radius: 15px;
+   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+   backdrop-filter: blur(12.7px);
+   -webkit-backdrop-filter: blur(12.7px);
+}
+.result-cont button{
+   height: 50px;
+   border: none;
+   background-color: rgba(255, 230, 0, 0.836);
+   font-weight: bold;
+   border-radius: 10px;
+   font-size: 22px;
+   color: black;
+}
+.result-cont input{
+   padding-left: 10px;
+   border-radius: 10px;
+   font-size: 22px;
+}
+
+.bmi-cont{
+   padding: 10px;
+   height: 70%;
+   display: grid;
+   grid-template-rows: 1fr 50px;
+   background: rgb(72,76,101);
+   border-radius: 15px;
+   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+   backdrop-filter: blur(12.7px);
+   -webkit-backdrop-filter: blur(12.7px);
+}
+.bmi-cont input{
+   border-radius: 10px;
+   font-size: 22px;
+   text-align: center;
+}
+
+.bmi-parent{
+   margin-top: 20px;
+   position: relative;
+   overflow: hidden;
+   width: 380px;
+   height: 190px;
+   display: flex;
+   margin-left: auto;
+   margin-right: auto;
+}
+
+.bmi-meter{
+   background: conic-gradient(from -90deg,
+   red 0% 5%,
+   pink 5% 7%,
+   yellow 7% 10%,
+   green 10% 20%,
+   yellow 20% 28%,
+   pink 28% 35%,
+   red 35% 44%,
+   darkred 44% 100%);
+   height: 380px;
+   width: 380px;
+   border-radius: 50%;
+   position: relative;
+}
+.cover{
+   background-color: rgb(72,76,101);
+   height: 340px;
+   width: 340px;
+   top:20px;
+   margin-left: 20px;
+   border-radius: 50%;
+   position: absolute;
+   z-index: 0;
+}
+.needle{
+   position: relative;
+   height: 6px;
+   width: 295px;
+   background-color: rgb(255, 255, 255);
+   border: solid black 5px;
+   border-radius: 10px;
+   z-index: 1;
+   margin-left: auto;
+   margin-right: auto;
+   margin-top: 50%
+}
+.circ{
+   position: absolute;
+   margin-left: 44.9%;
+   top: 44.9%;
+   height: 30px;
+   width: 30px;
+   border-radius: 50%;
+   background-color: rgb(255, 255, 255);
+   border: 5px solid black;
+   z-index: 2;
+}
+.user-data-set{
+   visibility: hidden;
+   position: absolute;
+}
+.save-change-btn{
+   width: 100%;
+   border-radius: 15px;
+   font-size: 40px;
+   text-align: center;
+   background-image: linear-gradient(90deg, rgba(255, 230, 0, 0.863), rgba(255, 230, 0, 0.74)),url(backlogin.png);
+   border: none;
+   font-weight: bold;
+   padding: 20px;
+   cursor: pointer;
+   transition: background-image 0.3s;
+}
+.user-data-form{
+   visibility: hidden;
+   position: absolute;
+}
+.save-change-btn:hover{
+   background-image: linear-gradient(90deg, rgb(255, 230, 0), rgb(255, 240, 103)),url(backlogin.png);
+}
+
+.secondary{
+   display: flex;
+   flex-direction: column;
+   color: white;
+}
+
+.secondary h1{
+   display: block;
+   padding: 15px;
+   margin: 0;
+   font-size: 38px;
+   font-weight: normal;
+}
+.secondary h2{
+   margin: 0;
+   padding: 15px 20px;
+}
+.secondary select{
+   background: rgba(255, 255, 255, 0.226);
+   border-radius: 20px;
+   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+   backdrop-filter: blur(12.7px);
+   -webkit-backdrop-filter: blur(12.7px);
+   border: 1px solid rgba(255, 255, 255, 0.144);
+   height: 60px;
+   width: 350px;
+   padding-left: 20px;
+   font-size: 25px;
+   margin: 0 25px;
+   margin-bottom: 25px;
+}
+.days{
+   display: flex;
+   flex-direction: row;
+   justify-content: space-evenly;
+   height: 90px;
+   margin: 0 20px;
+}
+.day{
+   display: grid;
+   height: 90px; 
+   grid-template-rows: 40px 1fr;
+   justify-content: center;
+   align-items: center;
+}
+.day span{
+   text-align: center;
+   font-size: 28px;
+   margin-bottom: 10px;
+}
+
+.container {
+   display: block;
+   position: relative;
+   cursor: pointer;
+   font-size: 22px;
+   height: 50px;
+   width: 50px;
+   -webkit-user-select: none;
+   -moz-user-select: none;
+   -ms-user-select: none;
+   user-select: none;
+}
+ 
+ /* Hide the browser's default checkbox */
+.container input {
+   position: absolute;
+   opacity: 0;
+   cursor: pointer;
+   height: 0;
+   width: 0;
+}
+.checkmark {
+   position: absolute;
+   top: 0;
+   left: 0;
+   height: 100%;
+   width: 100%;
+   border-radius: 10px;
+   background-color: rgba(255, 255, 255, 0.747);
+}
+ 
+ /* On mouse-over, add a grey background color */
+.container:hover input ~ .checkmark {
+   background-color: rgba(255, 255, 255, 0.897);
+}
+ 
+ /* When the checkbox is checked, add a blue background */
+.container input:checked ~ .checkmark {
+   background-color: rgb(99, 223, 171);
+}
+ 
+ /* Create the checkmark/indicator (hidden when not checked) */
+.checkmark:after {
+   content: "";
+   position: absolute;
+   display: none;
+}
+ 
+ /* Show the checkmark when checked */
+.container input:checked ~ .checkmark:after {
+   display: block;
+}
+ 
+ /* Style the checkmark/indicator */
+.container .checkmark:after {
+   left: 15px;
+   top: 5px;
+   width: 14px;
+   height: 28px;
+   border: solid white;
+   border-width: 0 3px 3px 0;
+   -webkit-transform: rotate(45deg);
+   -ms-transform: rotate(45deg);
+   transform: rotate(45deg);
+}
+.create-cont{
+   position: absolute;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   height: 180px;
+   bottom: 0;
+   width: 100%;
+}
+.create-cont button{
+   width: 100%;
+   border-radius: 15px;
+   font-size: 35px;
+   text-align: center;
+   background-image: linear-gradient(90deg, rgba(255, 230, 0, 0.863), rgba(255, 230, 0, 0.74)),url(backlogin.png);
+   border: none;
+   font-weight: bold;
+   padding: 20px;
+   cursor: pointer;
+   transition: background-image 0.3s;
+   margin: 0 20px;
+}
+
+.create-cont button:hover{
+   background-image: linear-gradient(90deg, rgb(255, 230, 0), rgb(255, 240, 103)),url(backlogin.png);
+}
+
+.generated{
+   position: absolute;
+   visibility: hidden;
+   height: 625px;
+   width: 100%;
+   overflow-y: auto;
+}
+.gen-day-cont{
+   background: rgba(255, 255, 255, 0.226);
+   border-radius: 20px;
+   box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+   backdrop-filter: blur(12.7px);
+   -webkit-backdrop-filter: blur(12.7px);
+   border: 1px solid rgba(255, 255, 255, 0.144);
+   margin: 15px 10px;
+}
+.gen-day-cont h2{
+   font-size: 30px;
+   margin: 0px;
+   padding: 10px;
+   border-bottom: 3px solid rgba(255, 255, 255, 0.644); 
+}
+.gen-ex-cont{
+   border: 2px solid white;
+   border-radius: 10px;
+   display: flex;
+   justify-content: space-between;
+   align-items: center;
+   margin: 10px 10px;
+}
+.gen-ex-cont h3{
+   display: block;
+   margin: 0;
+   padding: 7px 10px;
+   font-size: 25px;
+}
+.gen-ex-cont p{
+   display: block;
+   margin: 0;
+   font-size: 20px;
+   padding: 3px 15px;
+   color: rgb(255, 230, 0);
+}
+.wrk-inf{
+   visibility: hidden;
+   position: absolute;
+}
+.wrk-info{
+   display: flex;
+   justify-content: space-between;
+   border-bottom: solid 1px white;
+}
+.add-wrk-plan{
+   position: absolute;
+   visibility: hidden;
+   margin: 20px;
+   width: 120px;
+   border-radius: 15px;
+   font-size: 60px;
+   padding: 0;
+   background-image: linear-gradient(90deg, rgba(255, 230, 0, 0.863), rgba(255, 230, 0, 0.74)),url(backlogin.png);
+   border: none;
+   font-weight: bold;
+}
+.add-wrk-plan:hover{
+   background-image: linear-gradient(90deg, rgb(255, 230, 0), rgb(255, 240, 103)),url(backlogin.png);
+}
+@media (max-width:1450px) {
+   .goal-input-data{
+      grid-template-columns: 1fr;
+      grid-template-rows: 1fr 1fr;
+   }
+}
+@media (max-width:1100px) {
+   .user-data{
+      grid-template-columns: 1fr;
+      grid-template-rows: 1fr 1fr;
+      margin-bottom: 20px;
+   }
+   .secondary{
+      height: 50%;
+   }
+   .right{
+      margin-left: 20px;
+   }
+}
+@media (max-width:950px) {
+   .main{
+      grid-template-columns: 10vw 1fr;
+      column-gap: 2vw;
+      width: 100vw;
+      padding: 0;
+   }
+   .interface{
+      width: 85vw;
+      margin: 0;
+      height: 580vw;
+      grid-template-rows: 16vw 1fr;
+   }
+   .sidebar{
+      margin: 0;
+      margin-left: 1.2vw;
+   }
+   #logo{
+      height: 8vw;
+      margin: 0;
+      margin-top: 5vw;
+      margin-left: 1vw;
+   }
+   .sidebar button,#diet-plan,#home{
+      margin: 0;
+      height: 10vw;
+      width: 10vw;
+   }
+   .options{
+      margin-top: 10vw;
+      row-gap: 5vw;
+   }
+   .sidebar div img{
+      height: 7vw;
+   }
+   
+   .goal-input-data{
+      margin: 0;
+   }
+   .sidebar-settings,.user-info{
+      margin: 0;
+   }
+   .sidebar-settings{
+      margin-top: 3vw;
+      width: 85vw;
+      margin-bottom: 3vw;
+   }
+   .sidebar-opts{
+      padding: 0;
+   }
+   .sidebar-title{
+      font-size: 2vh;
+      padding: 0;
+   }
+   .sidebar-title span{
+      font-size: 2vh;
+   }
+   .opt-button-container button img{
+      height: 3vh;
+   }
+   .opt-button-container button span{
+      font-size: 2vh;
+   }
+   .wei-part{
+      margin: 2vw;
+      height: 97%;
+      display: flex;
+      flex-direction: column;
+      width: 81vw;
+
+   }
+   .wei-data{
+      row-gap: 0;
+      padding: 2vw;
+   }
+   .wei-tit{
+      font-size: 6vw;
+      padding: 2vw;
+   }
+   .user-data{
+      width: 85vw;
+   }
+   .data-input input{
+      width: 30vw;
+      height: 15vw;
+      font-size: 6vw;
+   }
+   .inp-sel{
+      display: flex;
+      flex-direction: column;
+      justify-content: start;
+      align-items: start;
+   }
+   .inp-sel span{
+      font-size: 5vw;
+      padding: 0;
+      padding-top: 2vw;
+   }
+   .data-input select{
+      display: inline-block;
+      width: 75vw;
+      height: 15vw;
+      font-size: 6vw;
+   }
+   .cal-calc h1{
+      font-size: 5vw;
+   }
+   .right{
+      margin: 2vw;
+   }
+   .cal-calc select{
+      width: 81vw;
+      padding-left: 2vw;
+      font-size: 4vw;
+   }
+   .cal-calc div{
+      column-gap: 1vw;
+      grid-template-columns: 24vw 54vw;
+   }
+   .result-cont{
+      width: 78vw;
+      padding: 2vw;
+      column-gap: 1vw;
+      grid-template-columns: 10vw 1fr;
+   }
+   .result-cont button{
+      height: fit-content;
+      font-size: 4vw;
+      padding: 2vw;
+   }
+   .result-cont input{
+      font-size: 4vw;
+   }
+   .bmi-calc h1{
+      font-size: 5vw;
+   }
+   .bmi-cont{
+      width: 80vw;
+      padding: 1vw;
+      height: fit-content;
+   }
+   .bmi-parent{
+      margin-top: 2vw;
+      width: 78vw;
+      height: 39vw;
+   }
+   .bmi-meter{
+      width: 78vw;
+      height: 78vw;
+   }
+   .data-input span{
+      font-size: 4vw;
+   }
+   .bmi-cont input{
+      font-size: 4vw;
+   }
+   .cover{
+      margin-left: 2vw;
+      top: 2vw;
+      width: 74vw;
+      height: 74vw;
+   }
+   .save-change-btn{
+      font-size: 7vw;
+   }
+   .secondary h1{
+      padding: 2vw;
+      font-size: 6vw;
+   }
+   .secondary{
+      width: 85vw;
+   }
+   .secondary h2{
+      padding: 2vw;
+      font-size: 5vw;
+   }
+   .secondary select{
+      margin-left: 2vw;
+   }
+   .container{
+      width: 9vw;
+      height: 9vw;
+   }
+   .day span{
+      font-size: 4vw;
+   }
+}

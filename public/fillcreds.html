@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link href="/css/fillcreds.css" rel="stylesheet">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+   <div class="main-body">
+      <div class="logo-container">
+         <img src="/css/logo.png">
+      </div>
+      <div class="form-box">
+         <form class="cal-calc" action="/details" method="POST" >
+            <div class="cal-calc-title">
+               Please enter your data
+            </div>
+            <div class="inputs-calc">
+               <div class="var-cont age">
+                  <input type="number" placeholder="Enter your age" class="ageinput">
+                  <span>Age</span>
+               </div>
+               <div class="var-cont hei">
+                  <input type="number" placeholder="Enter your height" class="heiinput">
+                  <span>Height (cm)</span>
+               </div>
+               <div class="var-cont wei">
+                  <input type="number" name="stW" placeholder="Enter your current weight" class="weiinput">
+                  <span>Weight (kg)</span>
+               </div>
+               <div class="var-cont weigoal">
+                  <input type="number" name="glW" placeholder="Enter your goal weight" class="weigoalinput">
+                  <span>Weight (kg)</span>
+               </div>
+               <div class="var-cont gen">
+                  <select name="Goal" class="goalsel">
+                     <option value="1">Select your Goal</option>
+                     <option value="2">Lose Weight</option>
+                     <option value="3">Mentain Weight</option>
+                     <option value="4">Gain Weight</option>
+                  </select>
+                  <span>Gender</span>
+               </div>
+               <div class="var-cont gen">
+                  <select name="Gender" class="gensel">
+                     <option value="1">Select a Gender</option>
+                     <option value="2">Male</option>
+                     <option value="3">Female</option>
+                  </select>
+                  <span>Gender</span>
+               </div>
+               <div class="var-cont act">
+                  <select name="ActivityLevel" class="actsel">
+                     <option value="1">Select an Activity Level</option>
+                     <option value="2">Not very Active</option>
+                     <option value="3">Ligtly Active</option>
+                     <option value="4">Active</option>
+                     <option value="5">Very Active</option>
+                  </select>
+                  <span>Activity</span>
+               </div>
+            </div>
+            <div class="result-cont">
+               <div class="basics">
+                  <button class="calc-btn" type="button">
+                     Calculate
+                  </button>
+               </div>  
+               <div class="result-cont-add"> 
+                  <input type="submit" id="add-to-goal" name="addGoal" value="I'm commited!">
+                  <input id="calcres" placeholder="Result" type="text" readonly name="ress">
+                  
+               </div>
+            </div>
+         </form>
+      </div>
+   </div>
+   <script src="/js/fillcreds.js"></script>
+</body>
+</html>

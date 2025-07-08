@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <link href="/css/addmeals.css" rel="stylesheet">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   </head>
+   <body>
+      <div class="main">
+         <div class="sidebar">
+            <div class="logo"><img src="/icons/logopic.png" id="logo"></div>
+            <div class="options">
+               <form action="/home" method="get"><button id="home"><img src="/icons/home.png"></button></form>
+               <form action="/workout" method="get"><button id="workout-plan"><img src="/icons/workout.png"></button></form>
+               <button id="diet-plan"><img src="/icons/meals.png"></button>
+               <form action="/settings" method="get"><button id="settings"><img src="/icons/settings.png"></button></form>
+            </div>
+         </div>
+         <div class="meal-page">
+            <div class="user-inputs-container">
+               <div class="meal-type-bar">
+                  <div class="button-box">
+                     <div id="btn"></div>
+                     <button type="button" class="breakfast-btn">
+                        Breakfast
+                     </button>
+                     <button type="button" class="lunch-btn">
+                        Lunch
+                     </button>
+                     <button type="button" class="dinner-btn">
+                        Dinner
+                     </button>
+                     <button type="button" class="snack-btn">
+                        Snack
+                     </button>
+                  </div>
+               </div>
+               <form class="main-meal" action="/addToCals" method="post">
+                  <input name="userCals" class="currCals curr-inp" readonly>
+                  <input name="userPro" class="currPro curr-inp" readonly>
+                  <input name="userFat" class="currFat curr-inp" readonly>
+                  <input name="userCarb" class="currCarb curr-inp" readonly>
+                  <input name="timeOfDay" class="curr-time curr-inp" type="text" readonly value="1">
+                  <div class="meal-data-input">
+                     <div class="item-title">
+                        <input name="foodName" class="name" type="text" readonly>
+                     </div>
+                     <div class="q-input">
+                        <input type="number" placeholder="Quantity" id="quantity-input" name="quantity">
+                        <select id="type-of-quantity" name="measureType">
+                           <option value="1">1 gram</option>
+                           <option value="2">100 grams</option>
+                         </select>
+                     </div>
+                     <div class="s-input">
+                        <button class="add-to-foods">Add to meals +</button>
+                     </div>
+                  </div>
+                  <div class="circle-bar">
+                     <div class="calorie-circle">
+                        <div class="outercal">
+                           <div class="innercal">
+                              <div id="cal-name">Calories</div>
+                              <div id="calorie-number">--</div>
+                           </div>
+                        </div>
+                        <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="250px" height="250px" class="circlecal">
+                           <circle cx="125" cy="125" r="110" stroke-linecap="round" />
+                        </svg>
+                     </div>
+                     <div class="perc-circle">
+                        <div class="outer">
+                           <div class="inner">
+                              <div id="perc-name">Health</div>
+                              <div id="perc-number">--
+                              </div>
+                           </div>
+                        </div>
+                        <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="250px" height="250px" class="circleperc">
+                           <circle cx="125" cy="125" r="91" stroke-linecap="round" />
+                        </svg>
+                     </div>
+                  </div>
+                  <div class="macros1">
+                     <div class="macros">
+                        <div class="calsss">
+                           <Span>Calories: </Span>
+                           <input class="nrcal" name="nrcal" readonly>
+                        </div>
+                        <div class="pro">
+                           <div>
+                              <div>Protein: </div>
+                              <input class="gramsp grams" name="tdPro" readonly>
+                           </div>
+                           <div>
+                              <div class="mty"></div>
+                              <div class="probar"></div>
+                           </div>
+                        </div>
+                        <div class="carb">
+                           <div>
+                              <div>Carbs: </div>
+                              <input class="gramsc grams" name="tdCarb" readonly>
+                           </div>
+                           <div>
+                              <div class="mty"></div>
+                              <div class="carbbar"></div>
+                           </div>
+                        </div>
+                        <div class="fat">
+                           <div>
+                              <div>Fats: </div>
+                              <input class="gramsf grams" name="tdFat" readonly>
+                           </div>
+                           <div>
+                              <div class="mty"></div>
+                              <div class="fatbar"></div>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </form>
+               <div class="names">
+                  <span>Today's meals</span>
+                  <span>Fun Facts</span>
+               </div>
+               <div class="meal-info">
+                  <div class="nutrition">
+                     <div class="time-of-meal">
+                        Select the time
+                     </div>
+                     <div class="what-i-ate">
+                     </div>
+                  </div>
+                  <div class="facts">
+                     
+                  </div>
+               </div>
+            </div>
+            <div class="meal-search-container">
+               <div class="input-space">
+                  <input type="text" class="user-message" placeholder="Search for a meal!">
+               </div>
+               <div class="scroll-space">
+                  
+               </div>
+            </div>
+         </div>
+      </div>
+      <div class="user-infos">
+         <div class="user-weight">
+            
+         </div>
+      </div>
+      <script type="module" src="/js/addmeals.js"></script>
+   </body>
+</html>

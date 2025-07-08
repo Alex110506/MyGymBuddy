@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <link href="/css/workoutpage.css" rel="stylesheet">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   </head>
+   <body>
+      <div class="main">
+         <div class="sidebar">
+            <div class="logo"><img src="/icons/logopic.png" id="logo"></div>
+            <div class="options">
+               <form action="/home" method="get"><button><img src="/icons/home.png"></button></form>
+               <button id="workout-plan" id="home"><img src="/icons/workout.png"></button>
+               <form action="/diet" method="get"><button id="diet-plan"><img src="/icons/meals.png"></button></form>
+               <form action="/settings" method="get"><button id="settings"><img src="/icons/settings.png"></button></form>   
+            </div>
+         </div>
+         <div class="work-page">
+            <div class="bigger-cont">
+               <form class="user-inputs-container" action="/addExercise" method="post">
+                  <div class="exercise-name-container">
+                     <input type="text" readonly class="exercise-name" name="exName" placeholder="Exercise Name">
+                  </div>
+                  <div class="two-cont">
+                     <div class="exercise-quantity-constainer">
+                        <input class="number-of" type="number" name="setNrCurr" placeholder="Sets">
+                        <div class="calories-burned">
+                           <div class="add-to-exercises">
+                              <input id="cals"  name="calBurnCurr" readonly>
+                              <p id="unit"></p>
+                           </div>
+                           <button class="add-btn">+</button>
+                        </div>
+                     </div>
+                     <div class="ex-info1">
+                        <div class="ex-info">
+                           <p style="margin:0; margin-top: 30px;">Exercise info</p>   
+                        </div>
+                        <input class="extype" name="exType">
+                     </div>
+                  </div>
+                  
+                  <div class="prompt-plan">
+                     <h1>Use your Training Plan</h1>
+                     <div class="wrk-info">
+                        <input type="text" class="wrk-id">
+                        <input tpye="text" class="wrk-days">
+                     </div>
+                     <div class="ex-cont"></div>
+                  </div>
+                  <div class="user-data">
+                     <input class="burned-cal" name="burnCal">
+                     <input class="nr-sets" name="nrSet">
+                     <input class="nr-mins" name="nrMin">
+                  </div>
+               </form>
+               <div class="workout-list-today">
+                  <div class="calorie-meter">
+                     <div class="calmet-name">
+                        <span class="calmet-tit">Calories burned: </span>
+                        <span class="calmet-nr">400/500 kcal</span>
+                     </div>
+                     <div class="calmet-bar">
+                        <div class="calmet-bar-prog">
+                           <div class="did-it"></div>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="title">Today's logged exercises</div>
+                  <div class="today-list">
+                     
+                  </div>
+               </div>
+            </div>
+            <div class="exercise-container">
+               <div class="str-selector">
+                  <div id="btn1"></div>
+                  <button id="arms">Arms</button>
+                  <button id="chest">Chest</button>
+                  <button id="back">Back</button>
+                  <button id="legs">Legs</button>
+                  <button id="abs">Abs</button>
+               </div>
+               <div class="car-selector">
+                  <div id="btn2"></div>
+                  <button id="fast">Fast-paced</button>
+                  <button id="slow">Slow-paced</button>
+               </div>
+               <div class="header">
+                  <div id="btn"></div>
+                  <button id="str-btn">
+                     <img src="/icons/workoutimg.png">
+                     <span>Strenght</span>
+                  </button>
+                  <button id="flex-btn">
+                     <img src="/icons/stretch-athlete-exercise-standing-icon-600nw-273904820.png">
+                     <span>Flexibility</span>
+                  </button>
+                  <button id="car-btn">
+                     <img src="/icons/simple-abstract-minimalistic-logo-sports-600nw-1157506159.png">
+                     <span>Cardio</span>
+                  </button>
+               </div>
+               <div class="exercise-space">
+                  
+               </div>
+            </div>
+         </div>
+      </div>
+      <script type="module" src="/js/workoutpage.js"></script>
+   </body>
+</html>

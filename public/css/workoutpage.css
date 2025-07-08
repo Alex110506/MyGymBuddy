@@ -1,0 +1,969 @@
+body{
+   margin: 0;
+   padding: 0;
+   font-family: Arial;
+}
+
+.main{
+   width: 100%;
+   height: 100%;
+   background-image: linear-gradient(90deg, rgba(0, 0, 0,1), rgba(16, 28, 95, 0.788)),url(backlogin.png);
+   background-position: center;
+   background-size: cover;
+   position: absolute;
+   display: grid;
+   grid-template-columns: 100px 1fr;
+   column-gap: 20px;
+   overflow: hidden;
+}
+.sidebar{
+   background-color: rgb(0, 0, 0);
+   margin-top: 20px;
+   margin-left: 20px;
+   margin-bottom: 20px;
+}
+.home-page{
+   background: rgba(255, 255, 255, 0.07);
+   border-radius: 30px;
+   box-shadow: 0 8px 30px rgba(0, 0, 0, 0.301);
+   backdrop-filter: blur(12.7px);
+   -webkit-backdrop-filter: blur(12.7px);
+   border: 1px solid rgba(255, 255, 255, 0.34);
+   margin-top: 30px;
+   margin-right: 30px;
+   margin-bottom: 30px;
+   border-radius: 30px;
+}
+#logo{
+   height: 70px;
+   margin-left: 3px;
+   margin-top: 15px;
+}
+.options{
+   display: grid;
+   grid-template-columns: 1fr;
+   margin-top: 20px;
+}
+.sidebar button{
+   background-color: transparent;
+   border: none;
+   cursor: pointer;
+   margin-top: 23px;
+   height: 80px;
+   width: 80px;
+   border-radius: 30px;
+   transition: background-color 0.3s;
+}
+
+.options img{
+   height: 40px;
+}
+.sidebar button:hover{
+   background-color: rgb(46, 30, 119);
+}
+.sidebar button:active{
+   background-color: rgb(60, 43, 138);
+}
+#workout-plan{
+   background-color: rgba(128, 128, 128, 0.288);
+   width: 120px;
+   border-top-right-radius: 0;
+   border-bottom-right-radius: 0;
+}
+
+
+.work-page{
+   display: grid;
+   grid-template-columns: 1.6fr 657px;
+   margin-top: 30px;
+   margin-right: 30px;
+   column-gap: 20px;
+   
+}
+.bigger-cont{
+   display: grid;
+   grid-template-columns: 1fr 1fr;
+   column-gap: 20px;
+}
+.user-inputs-container{
+   background: rgba(255, 255, 255, 0.07);
+   border-radius: 30px;
+   box-shadow: 0 8px 30px rgba(0, 0, 0, 0.301);
+   backdrop-filter: blur(12.7px);
+   -webkit-backdrop-filter: blur(12.7px);
+   border: 1px solid rgba(255, 255, 255, 0.34);
+   display: grid;
+   grid-template-rows: 170px 340px 1fr;
+   margin-bottom: 30px;
+}
+.two-cont{
+   display: grid;
+   grid-template-rows: 170px 160px;
+   row-gap: 10px;
+}
+.exercise-name-container{
+   background: rgba(255, 255, 255, 0.07);
+   border-radius: 16px;
+   box-shadow: 0 8px 30px rgba(0, 0, 0, 0.301);
+   backdrop-filter: blur(12.7px);
+   -webkit-backdrop-filter: blur(12.7px);
+   border: 1px solid rgba(255, 255, 255, 0.34);
+   margin: 20px;
+   border-radius: 20px;
+   color: rgba(255, 255, 255, 0.486);
+   text-align: center;
+   padding-top: 10px;
+   font-size: 50px;
+}
+.exercise-name{
+   background-color: rgba(0, 0, 0, 0.37);
+   border: none;
+   margin: 10px;
+   border-radius: 15px;
+   padding-left: 15px;
+   font-size: 28px;
+   color: white;
+   width:90%;
+   height: 80%;
+}
+.exercise-quantity-constainer{
+   background: rgba(255, 255, 255, 0.07);
+   border-radius: 16px;
+   box-shadow: 0 8px 30px rgba(0, 0, 0, 0.301);
+   backdrop-filter: blur(12.7px);
+   -webkit-backdrop-filter: blur(12.7px);
+   border: 1px solid rgba(255, 255, 255, 0.34);
+   margin: 20px;
+   margin-top: 0;
+   border-radius: 20px;
+   color: white;
+   display: grid;
+   grid-template-columns: 0.6fr 1fr;
+   padding: 20px;
+   align-items: center;
+}
+.number-of{
+   width: 100%;
+   height: 100px;
+   background-color: rgba(0, 0, 0, 0.37);
+   border: none;
+   margin-top: -10px;
+   border-radius: 15px;
+   padding-left: 30px;
+   font-size: 60px;
+   color: white;
+}
+.number-of::placeholder{
+   font-size: 48px;
+   padding-bottom: 20px;
+}
+.exercise-quantity-constainer p{
+   text-align: center;
+   margin: 10px 0;
+   margin-left: 50px;
+   color: aquamarine;
+   font-size: 23px;
+}
+.add-to-exercises{
+   position: relative;
+   right: 10px;
+}
+#cals{
+   border: none;
+   font-size: 25px;
+   font-weight: bold;
+   text-align: center;
+   width: 60%;
+   margin-left: 50px;
+   background-color: transparent;
+   color: white;
+}
+.workout-list-today{
+   display: grid;
+   grid-template-rows: 120px 50px 1fr;
+}
+.calorie-meter{
+   background: rgba(255, 255, 255, 0.07);
+   border-radius: 30px;
+   box-shadow: 0 8px 30px rgba(0, 0, 0, 0.301);
+   backdrop-filter: blur(12.7px);
+   -webkit-backdrop-filter: blur(12.7px);
+   border: 1px solid rgba(255, 255, 255, 0.34);
+}
+.today-list{
+   background: rgba(255, 255, 255, 0.07);
+   border-radius: 30px;
+   box-shadow: 0 8px 30px rgba(0, 0, 0, 0.301);
+   backdrop-filter: blur(12.7px);
+   -webkit-backdrop-filter: blur(12.7px);
+   border: 1px solid rgba(255, 255, 255, 0.34);
+   margin-top: 0;
+   margin-bottom: 30px;
+}
+.exercise-container{
+   height: 845px;
+   background: rgba(255, 255, 255, 0.07);
+   border-radius: 30px;
+   box-shadow: 0 8px 30px rgba(0, 0, 0, 0.301);
+   backdrop-filter: blur(12.7px);
+   -webkit-backdrop-filter: blur(12.7px);
+   border: 1px solid rgba(255, 255, 255, 0.34);
+   display: grid;
+   grid-template-rows: 120px 1fr;
+   overflow: hidden;
+}
+.selector-container{
+   display: grid;
+   grid-template-columns: 1fr 360px;
+}
+.ex-selector{
+
+   border-radius: 180px;
+   display: grid;
+   grid-template-rows: 1fr 1fr;
+   grid-template-columns: 1fr 1fr;
+   overflow: hidden;
+}
+.ex-selector button{
+   background-color: transparent;
+   border: none;
+   cursor: pointer;
+}
+.strength-btn{
+   background-image: radial-gradient(circle at 180px 180px, rgba(0, 0, 0, 0) 0, rgba(0, 0, 0, 0) 120px, rgba(201, 82, 108, 0.63) 20px);
+   border-top-left-radius: 180px;
+}
+.flexi-btn{
+   background-image: radial-gradient(circle at 0px 180px, rgba(0, 0, 0, 0) 0, rgba(0, 0, 0, 0) 120px, rgb(0, 255, 191,0.63) 20px);
+}
+.warmup-btn{
+   background-image: radial-gradient(circle at 180px 0px, rgba(0, 0, 0, 0) 0, rgba(0, 0, 0, 0) 120px, rgb(255, 214, 161,0.63) 20px);
+}
+.cardio-btn{
+   background-image: radial-gradient(circle at 0px 0px, rgba(0, 0, 0, 0) 0, rgba(0, 0, 0, 0) 120px, rgb(102, 206, 247,0.63) 20px);
+}
+
+.header{
+   width: 657px;
+   display: grid;
+   grid-template-columns: repeat(3,1fr);
+   overflow: hidden;
+   border-bottom: 1px solid rgba(255, 255, 255, 0.5);
+   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.37);
+   column-gap: 10px;
+   background-color: #5b6183;
+   z-index: 4;
+}
+.header button{
+   background-color: transparent;
+   border: none;
+   color: white;
+   display: grid;
+   grid-template-rows: 1fr 1fr;
+   align-items: center;
+   justify-content: center;
+   padding-top: 20px;
+   font-size: 20px;
+   cursor: pointer;
+   z-index: 5;
+}
+.header img{
+   height: 60px;
+   margin-bottom: -10px;
+   display: flex;
+   margin-left: auto;
+   margin-right: auto;
+}
+#btn{
+   position: absolute;
+   width: 219px;
+   height: 118px;
+   background: rgba(186, 248, 250, 0.281);
+   border-radius: 30px;
+   box-shadow: 0 2px 10px rgba(255, 255, 255, 0.301);
+   -webkit-backdrop-filter: blur(12.7px);
+   border: 1px solid rgba(255, 255, 255, 0.34);
+   margin-top: 0;
+   border-bottom-left-radius: 0;
+   border-bottom-right-radius: 0;
+   transition: 0.3s;
+}
+.str-selector,.car-selector{
+   width: 600px;
+   background-color: #303761;
+   height: 40px;
+   position: absolute;
+   top: 20px;
+   display: grid;
+   grid-template-columns: repeat(5,1fr);
+   margin-left:27px;
+   border-radius: 12px;
+   overflow: hidden;
+   border: solid 1px rgba(255, 255, 255, 0.521);
+   transition: 0.5s;
+   z-index: 2;
+}
+.car-selector{
+   display: grid;
+   grid-template-columns: 1fr 1fr;
+   top: 20px;
+}
+.str-selector button,.car-selector button{
+   font-size: 20px;
+   background-color: transparent;
+   border: none;
+   color: white;
+   cursor: pointer;
+   z-index: 3;
+}
+#btn1{
+   position: absolute;
+   width: 120px;
+   height: 40px;
+   background: rgba(255, 255, 255, 0.07);
+   border-radius: 12px;
+   box-shadow: 0 8px 30px rgba(0, 0, 0, 0.301);
+   backdrop-filter: blur(12.7px);
+   -webkit-backdrop-filter: blur(12.7px);
+   border: 1px solid rgba(255, 255, 255, 0.34);
+   margin-top: 0;
+   transition: 0.3s;
+   z-index:2;
+}
+#btn2{
+   position: absolute;
+   width: 300px;
+   height: 40px;
+   background: rgba(255, 255, 255, 0.07);
+   border-radius: 12px;
+   box-shadow: 0 8px 30px rgba(0, 0, 0, 0.301);
+   backdrop-filter: blur(12.7px);
+   -webkit-backdrop-filter: blur(12.7px);
+   border: 1px solid rgba(255, 255, 255, 0.34);
+   margin-top: 0;
+   transition: 0.3s;
+}
+.exercise-space{
+   padding-top: 100px;
+   display: grid;
+   grid-template-columns: 1fr;
+   overflow-y: scroll;
+}
+.exercise-unit{
+   width: 600px;
+   background: rgba(255, 255, 255, 0.07);
+   border-radius: 15px;
+   box-shadow: 0 8px 30px rgba(0, 0, 0, 0.301);
+   backdrop-filter: blur(12.7px);
+   -webkit-backdrop-filter: blur(12.7px);
+   border: 1px solid rgba(255, 255, 255, 0.34);
+   height: 80px;
+   margin-left: 27px;
+   display: grid;
+   grid-template-columns: 90px 1fr 80px;
+   color: white;
+   margin-bottom: 15px;
+}
+.exercise-unit img{
+   height: 60px;
+   padding: 10px;
+   padding-left: 15px;
+}
+.exercise-unit button{
+   background: rgba(255, 255, 255, 0.116);
+   border-radius: 10px;
+   backdrop-filter: blur(12.7px);
+   -webkit-backdrop-filter: blur(12.7px);
+   border: 1px solid rgba(255, 255, 255, 0.34);
+   color: white;
+   font-size: 40px;
+   margin: 7px;
+   cursor: pointer;
+}
+.exercise-info{
+   font-size: 30px;
+   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+   padding-left: 10px;
+   padding-top:17px;
+}
+#da1{
+   height: 50px;
+   padding-top: 15px;
+}
+.exercise-info-flex{
+   display: grid;
+   grid-template-rows: 2fr 1fr;
+}
+.st-name{
+   font-size: 36px;
+   padding-top: 7px;
+   border-bottom: solid white 1px;
+}
+.targeted{
+   padding-top: 4px;
+}
+
+.prompt-plan{
+   background: rgba(255, 255, 255, 0.07);
+   border-radius: 15px;
+   box-shadow: 0 8px 30px rgba(0, 0, 0, 0.301);
+   backdrop-filter: blur(12.7px);
+   -webkit-backdrop-filter: blur(12.7px);
+   border: 1px solid rgba(255, 255, 255, 0.34);
+   margin: 0 20px;
+   margin-bottom: 20px;
+   height: 320px;
+   overflow: hidden;
+}
+.prompt-plan h1{
+   color: white;
+   margin: 0;
+   padding: 10px;
+   border-bottom: 1px solid white;
+}
+
+.ex-info1{
+   background: rgba(255, 255, 255, 0.07);
+   border-radius: 15px;
+   box-shadow: 0 8px 30px rgba(0, 0, 0, 0.301);
+   backdrop-filter: blur(12.7px);
+   -webkit-backdrop-filter: blur(12.7px);
+   border: 1px solid rgba(255, 255, 255, 0.34);
+   margin: 0 20px;
+   color: rgba(255, 255, 255, 0.452);
+   font-size: 50px;
+   margin-bottom: 20px;
+   overflow: hidden;
+}
+.ex-info{
+   height: 130px;
+   width: 100%;
+   text-align: center;
+   overflow-y: auto;
+}
+.ex-info span{
+   margin-top: 30px;
+}
+
+.calories-burned{
+   display: grid;
+   grid-template-columns: 2fr 1fr;
+   align-items: center;
+}
+.add-btn{
+   background-color: rgba(255, 255, 255, 0.116);
+   border-radius: 10px;
+   backdrop-filter: blur(12.7px);
+   -webkit-backdrop-filter: blur(12.7px);
+   border: 1px solid rgba(255, 255, 255, 0.34);
+   color: white;
+   height: 70px;
+   width: 70px;
+   font-size: 40px;
+   cursor: pointer;
+   transition: background-color 0.3s;
+}
+.add-btn:hover{
+   background-color: rgba(255, 255, 255, 0.219);
+}
+
+.extype{
+   position: absolute;
+   visibility: hidden;
+}
+.user-data{
+   position: absolute;
+   visibility: hidden;
+}
+.today-list{
+   overflow: auto;
+   
+   padding-top: 10px;
+}
+.ex-in-list{
+   height: 120px;
+   margin: 20px;
+   margin-top: 10px;
+   margin-bottom: 0;
+   background-image: linear-gradient(135deg, rgba(255, 75, 75, 0.219), rgba(16, 28, 95, 0.788));
+   border-radius: 15px;
+   backdrop-filter: blur(12.7px);
+   -webkit-backdrop-filter: blur(12.7px);
+   border: 1px solid rgba(255, 255, 255, 0.34);
+   color: white;
+   display: grid;
+   grid-template-columns: 1fr 130px;
+}
+.main-info{
+   display: grid;
+   grid-template-rows: 1.7fr 1fr;
+   padding:10px;
+   padding-left: 16px;
+}
+.td-name{
+   height: 70px;
+   overflow-y: auto;
+   font-size: 34px;
+   width: 100%;
+   border-bottom: rgba(255, 255, 255, 0.603) 1px solid;
+}
+.td-cal{
+   color: aquamarine;
+   padding-top: 7px;
+   font-size: 20px;
+   padding-left: 10px;
+}
+.td-dur{
+   padding: 10px;
+   padding-top: 15px;
+   text-align: center;
+}
+.durnr{
+   font-size: 50px;
+   font-weight: bold;
+}
+.typedur{
+   font-size:20px;
+}
+.title{
+   font-size: 20px;
+   color: rgb(255, 233, 159);
+   margin-top: 20px;
+   margin-bottom: 10px;
+   padding-left: 10px;
+}
+
+.calorie-meter{
+   display: grid;
+   grid-template-rows: 1fr 2fr;
+}
+.calmet-name{
+   padding-top: 10px;
+}
+.calmet-tit{
+   padding: 20px;
+   padding-right: 0;
+   color: rgba(255, 255, 255, 0.795);
+   font-size: 24px;
+}
+.calmet-nr{
+   font-size: 30px;
+   color: white;
+   font-weight: bold;
+}
+.calmet-bar{
+   background-color: rgba(0, 0, 0, 0.322);
+   border-radius: 40px;
+   margin: 20px;
+   position: relative;
+}
+.calmet-bar-prog{
+   position: absolute;
+   background-color: rgb(255, 255, 255);
+   width: 100%;
+   height: 100%;
+   border-radius: 40px;
+}
+.did-it{
+   color: white;
+   font-size: 20px;
+   text-align: center;
+   margin-top: 5px;
+}
+.wrk-info{
+   position: absolute;
+   visibility: hidden;
+}
+
+.ex-cont{
+   height: 260px;
+   overflow-y: auto;
+   margin: 0;
+   padding: 15px 10px;
+}
+.ex-cont h3{
+   margin: 0;
+   padding: 7px 10px;
+   font-size: 25px;
+   display: block;
+   border-bottom: 1px solid rgba(255, 255, 255, 0.687);
+}
+.ex-cont h2{
+   color: rgba(255, 255, 255, 0.788);
+   font-size: 40px;
+   margin: 0;
+   text-align: center;
+}
+.ex-cont p{
+   margin: 0;
+   display: block;
+   padding: 5px 12px;
+}
+.ex-form-plan{
+   display: flex;
+   justify-content: space-between;
+   color: white;
+   border: 2px rgba(255, 255, 255, 0.687) solid;
+   border-radius: 10px;
+   margin-bottom: 20px;
+}
+.ex-form-btn{
+   display: flex;
+   align-items: center;
+   width: 75px;
+}
+.ex-form-vals{
+   width: 100%;
+}
+#ex-plan-name{
+   font-size: 30px;
+   text-align: left;
+   color: white;
+   font-weight: bold;
+   border-bottom: 2px solid rgba(255, 255, 255, 0.685);
+}
+.ex-form-btn button{
+   height: 50px;
+   width: 50px;
+   font-size: 30px;
+   color: white;
+   background-color: rgba(255, 255, 255, 0.07);
+   border-radius: 7px;
+   box-shadow: 0 8px 30px rgba(0, 0, 0, 0.301);
+   backdrop-filter: blur(12.7px);
+   -webkit-backdrop-filter: blur(12.7px);
+   border: 1px solid rgba(255, 255, 255, 0.34);
+   transition: background-color 0.3s;
+}
+.ex-form-btn button:hover{
+   background-color: rgba(255, 255, 255, 0.272);
+}
+.ex-cont h2{
+   color: white;
+   font-size: 33px;
+   margin-top: 10px;
+}
+.ex-cont h3{
+   color: rgba(255, 255, 255, 0.774);
+   font-size: 25px;
+   border: none;
+   font-weight: normal;
+   text-align: center;
+}
+.ex-cont a{
+   width: 100%;
+   display: flex;
+   align-items: center;
+   justify-content: center;
+   text-decoration: none;
+   margin-top: 10px;
+}
+.ex-cont a button{
+   border-radius: 15px;
+   font-size: 20px;
+   text-align: center;
+   background-image: linear-gradient(90deg, rgba(255, 230, 0, 0.863), rgba(255, 230, 0, 0.74)),url(backlogin.png);
+   border: none;
+   font-weight: bold;
+   padding: 10px;
+   cursor: pointer;
+}
+@media (max-width:1200px) {
+   .work-page{
+      grid-template-columns: 1fr;
+      grid-template-rows: 1600px 600px;
+      overflow-y: auto;
+      margin-left: 20px;
+   }
+   .bigger-cont{
+      display: grid;
+      grid-template-columns: 1fr;
+      grid-template-rows: 1fr 1.6fr;
+   }
+   .two-cont{
+      display: grid; 
+      grid-template-columns: 1.4fr 1fr;
+      grid-template-rows: 1fr;
+   }
+   .user-inputs-container{
+      grid-template-rows: 170px 180px 1fr;
+   }
+   .exercise-name{
+      font-size: 5vw;
+   }
+   .ex-info1{
+      margin-left: 0;
+   }
+   .sidebar{
+      background-color: transparent;
+   }
+   .dropdown-content input{
+      font-size: 2em;
+      width: 240px;
+   }
+   .sidebar button{
+      width: 100px;
+      height: 120px;
+      margin-bottom: 30px;
+   }
+   #home{
+      width: 130px;
+   }
+   .sidebar img{
+      height: 60px;
+   }
+   #logo{
+      margin-left: 20px;
+   }
+   .prompt-plan h1{
+      font-size: 5vw;
+   }
+   #cals{
+      font-size: 3vw;
+   }
+   #unit{
+      font-size: 3vw;
+   }
+   .calmet-name span{
+      font-size: 4vw;
+   }
+   .workout-list-today{
+      grid-template-rows: 140px 80px 1fr;
+   }
+   .title{
+      font-size: 3.5vw;
+   }
+   .td-name{
+      font-size: 5vw;
+   }
+   .td-cal{
+      font-size: 4vw;
+   }
+   .ex-in-list{
+      height: 160px;
+   }
+   .durnr{
+      font-size: 6vw;
+   }
+   .typedur{
+      font-size: 4vw;
+   }
+   .ex-in-list{
+      grid-template-columns: 1fr 170px;
+   }
+   #btn,#btn1,#btn2{
+      display: none;
+   }
+   .exercise-container{
+      grid-template-rows: 140px 1fr;
+   }
+   .header{
+      width: 100%;  
+   }
+   .header span{
+      font-size: 4vw;
+   }
+   .str-selector,.car-selector{
+      width: 100%;
+      margin: 0;
+      height: 90px;
+      
+   }
+   .str-selector button,.car-selector button{
+      font-size: 3.5vw;
+   }
+   .exercise-space{
+      padding: 25px;
+   }
+   .exercise-unit{
+      width: 100%;
+      height: 120px;
+      margin: 0;
+      margin-top: 20px;
+      grid-template-columns: 120px 1fr 110px;
+   }
+   .exercise-unit img{
+      align-self: center;
+      justify-self: center;
+      height: 80px;
+   }
+   #da1{
+      justify-self: center;
+      align-self: center;
+      height: 70px;
+   }
+   .st-name{
+      font-size: 5vw;
+   }
+   .targeted{
+      font-size: 3.5vw;
+   }
+   .exercise-unit button{
+      font-size: 7vw;
+   }
+   .ex-form-plan{
+      height: 120px;
+   }
+   #ex-plan-name{
+      font-size: 4.5vw;
+   }
+   .ex-form-plan p{
+      font-size: 3.3vw;
+   }
+   .ex-form-btn{
+      width: 120px;
+   }
+   .ex-form-btn button{
+      height: 90px;
+      width: 90px;
+      font-size: 8vw;
+   }
+}
+@media (max-width:700px) {
+   .main{
+      grid-template-columns: 10vw 1fr;
+      column-gap: 0;
+   }
+   .interface{
+      width: 90vw;
+      overflow-x:hidden;
+   }
+   .sidebar{
+      margin: 0;
+      margin-left: 1.2vw;
+   }
+   #logo{
+      height: 8vw;
+      margin: 0;
+      margin-top: 5vw;
+      margin-left: 1vw;
+   }
+   .sidebar button,#workout-plan{
+      margin: 0;
+      height: 10vw;
+      width: 10vw;
+   }
+   .options{
+      margin-top: 10vw;
+      row-gap: 5vw;
+   }
+   .sidebar div img{
+      height: 7vw;
+   }
+   .work-page{
+      margin: 0;
+      margin-left: 2vw;
+      margin-top: 3vw;
+      margin-right: 3vw;
+   }
+   .user-inputs-container{
+      grid-template-rows: 30vw 35vw 50vw;
+   }
+   .exercise-name-container{
+      height: 20vw;
+      padding: 0;
+   }
+   .exercise-name{
+      height: 16vw;
+      margin: 0;
+      margin-top: 2vw;
+      font-size: 6vw;
+   }
+   .two-cont{
+      height: 30vw;
+      column-gap: 3vw;
+   }
+   .exercise-quantity-constainer{
+      margin: 0;
+      padding: 2vw;
+      height: 20vw;
+      margin-left: 3vw;
+   }
+   .number-of{
+      width: 17vw;
+      padding-left: 2vw;
+      height: 15vw;
+      font-size: 7vw;
+   }
+   .number-of::placeholder{
+      font-size: 6vw;
+   }
+   .calories-burned{
+      padding: 0;
+      grid-template-columns: 15vw 1fr;
+   }
+   .add-to-exercises{
+      margin: 0;
+      padding: 0;
+   }
+   .calories-burned button{
+      padding: 0;
+      margin: 0;
+      height: 10vw;
+      width: 10vw;
+   }
+   #cals,#unit{
+      margin: 0;
+      width: 100%;
+      text-align: left;
+      margin-left: 4vw;
+      font-size: 3.4vw;
+   }
+   .ex-info{
+      font-size: 6.3vw;
+   }
+   .ex-form-plan{
+      height: 18vw;
+   }
+   .ex-form-btn{
+      width: 18vw;
+   }
+   .ex-form-btn button{
+      height: 12vw;
+      width: 12vw;
+   }
+   #ex-plan-name{
+      font-size: 5vw;
+   }
+   .ex-form-vals p{
+      font-size: 4vw;
+   }
+   .ex-cont{
+      height: 44vw;
+   }
+   .prompt-plan{
+      height: 65vw;
+   }
+   .calorie-meter{
+      height: 22vw;
+   }
+   .workout-list-today{
+      grid-template-rows: 22vw 11vw 1fr;
+      height: 140vw;
+   }
+   .today-list{
+      height: 100vw;
+   }
+   .exercise-container{
+      margin-top: -86vw;
+   }
+   .str-selector,.car-selector{
+      height: 10vw;
+   }
+   .exercise-space{
+      width: 80vw;
+      padding: 2vw;
+   }
+   .exercise-unit{
+      width: 80vw;
+      height: 20vw;
+      grid-template-columns: 18vw 1fr 20vw;
+   }
+   .exercise-unit img{
+      height: 14vw;
+   }
+   .exercise-unit button{
+      height: 16vw;
+      width: 16vw;
+   }
+}

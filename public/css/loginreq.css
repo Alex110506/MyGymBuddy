@@ -1,0 +1,76 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+    background-image: linear-gradient(135deg, rgba(0, 0, 0,1), rgba(16, 28, 95, 0.788), rgba(0, 0, 0,1)),url(backlogin.png);
+    background-size: cover;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    padding: 20px;
+    padding-top: 5rem;
+    gap: 2rem;
+}
+
+.login-req-cont {
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
+    backdrop-filter: blur(10px);
+    -webkit-backdrop-filter: blur(10px);
+    border-radius: 20px;
+    border:1px solid rgba(255, 255, 255, 0.18);
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+    padding: 2rem 1rem;
+    text-align: center;
+    max-width: 600px;
+    width: 100%;
+}
+
+.login-req-cont h1 {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+    color: #ffffff;
+}
+
+.login-req-cont h2 {
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+    color: #b5b5b5;
+}
+
+.login-req-cont button {
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+    background-color: #ffc64d;
+    font-weight: 600;
+    color: rgb(0, 0, 0);
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.login-req-cont button:hover {
+    background-color: #ffd57a;
+}
+
+@media (max-width: 500px) {
+    body img{
+        max-width: 90vw;
+    }
+    .login-req-cont h1 {
+        font-size: 2rem;
+    }
+
+    .login-req-cont h2 {
+        font-size: 0.95rem;
+    }
+
+    .login-req-cont button {
+        width: 100%;
+    }
+}

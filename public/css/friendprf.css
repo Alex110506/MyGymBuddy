@@ -1,0 +1,613 @@
+body{
+    margin: 0;
+    padding: 0;
+    font-family: Arial;
+}
+ 
+.main{
+    width: 100%;
+    height: 100%;
+    background-image: linear-gradient(90deg, rgba(0, 0, 0,1), rgba(16, 28, 95, 0.788)),url(backlogin.png);
+    background-position: center;
+    background-size: cover;
+    position: absolute;
+    display: grid;
+    grid-template-columns: 100px 1fr;
+    column-gap: 20px;
+    overflow: hidden;
+    overflow: auto;
+}
+.interface{
+    display: grid;
+    grid-template-columns: 2fr 1.4fr;
+}
+.sidebar{
+    background-color: rgb(0, 0, 0);
+    margin-top: 20px;
+    margin-left: 20px;
+    margin-bottom: 20px;
+}
+.sidebar-settings{
+    margin: 20px;
+    display:inline-block;
+}
+#logo{
+    height: 70px;
+    margin-left: 3px;
+    margin-top: 15px;
+}
+.options{
+    display: grid;
+    grid-template-columns: 1fr;
+    margin-top: 20px;
+}
+.sidebar button{
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    margin-top: 23px;
+    height: 80px;
+    width: 80px;
+    border-radius: 30px;
+    transition: background-color 0.3s;
+}
+
+.options img{
+    height: 40px;
+}
+.sidebar button:hover{
+    background-color: rgb(46, 30, 119);
+}
+.sidebar button:active{
+    background-color: rgb(60, 43, 138);
+}
+.main-cont{
+    margin: 30px;
+    margin-left: 0;
+    display: grid;
+    grid-template-rows: 80px 1fr;
+    row-gap: 30px;
+}
+.upper{
+    background: rgba(255, 255, 255, 0.07);
+    border-radius: 30px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.301);
+    backdrop-filter: blur(12.7px);
+    -webkit-backdrop-filter: blur(12.7px);
+    border: 1px solid rgba(255, 255, 255, 0.34);
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.lower{
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    column-gap: 30px;
+}
+.left{
+    display: grid;
+    grid-template-rows: 1fr 170px;
+    row-gap: 30px;
+}
+.right{
+    background: rgba(255, 255, 255, 0.07);
+    border-radius: 30px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.301);
+    backdrop-filter: blur(12.7px);
+    -webkit-backdrop-filter: blur(12.7px);
+    border: 1px solid rgba(255, 255, 255, 0.34);
+}
+.user-stats-cont{
+    background: rgba(255, 255, 255, 0.07);
+    border-radius: 30px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.301);
+    backdrop-filter: blur(12.7px);
+    -webkit-backdrop-filter: blur(12.7px);
+    border: 1px solid rgba(255, 255, 255, 0.34);
+    margin: 30px;
+    margin-left: 0;
+}
+.prf-img-cont{
+    background: rgba(255, 255, 255, 0.07);
+    border-radius: 30px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.301);
+    backdrop-filter: blur(12.7px);
+    -webkit-backdrop-filter: blur(12.7px);
+    border: 1px solid rgba(255, 255, 255, 0.34);
+}
+.friends-cont{
+    background: rgba(255, 255, 255, 0.07);
+    border-radius: 30px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.301);
+    backdrop-filter: blur(12.7px);
+    -webkit-backdrop-filter: blur(12.7px);
+    border: 1px solid rgba(255, 255, 255, 0.34);
+}
+
+.user-name-cont h1{
+    display: block;
+    color: white;
+    font-weight: bold;
+    margin: 0;
+    margin-left: 25px;
+}
+.back-btn-cont{
+    height: 100%;
+    display: flex;
+    justify-content:start;
+    align-items: center;
+}
+.back-btn-cont button{
+    margin-right: 20px;
+    width: 100%;
+    padding: 10px 20px;
+    background-color: rgba(255, 0, 0, 0.205);
+    border-radius: 15px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.301);
+    backdrop-filter: blur(12.7px);
+    -webkit-backdrop-filter: blur(12.7px);
+    border: 1px solid rgba(255, 255, 255, 0.34);
+    color: white;
+    font-size: 30px;
+    font-weight: bold;
+    text-align: center;
+    transition: background-color 0.3s;
+}
+.back-btn-cont button:hover{
+    background-color: rgba(255, 0, 0, 0.384);
+}
+.prf-img-cont{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.prf-img-cont img{
+    height: 410px;
+    width: 410px;
+    border-radius: 50%;
+}
+.friends-cont{
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    justify-content: center;
+    align-items: center;
+}
+.nr-friends{
+    color: white;
+    font-size: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.delete-friend-cont{
+    position: relative;
+    display: flex;
+    justify-content:center;
+}
+.delete-friend-cont button{
+    height: 60px;
+    width: 350px;
+    margin-bottom: 20px;
+    background-color: rgba(255, 0, 0, 0.205);
+    border-radius: 15px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.301);
+    backdrop-filter: blur(12.7px);
+    -webkit-backdrop-filter: blur(12.7px);
+    border: 1px solid rgba(255, 255, 255, 0.34);
+    color: white;
+    font-size: 30px;
+    font-weight: bold;
+    text-align: center;
+    transition: background-color 0.3s;
+}
+.delete-friend-cont button:hover{
+    background-color: rgba(255, 0, 0, 0.384);
+}
+.right h1{
+    color: white;
+    font-weight: bold;
+    margin: 0;
+    padding: 15px;
+    border-bottom: 1px rgba(255, 255, 255, 0.71) solid;
+}
+.user-stats-cont{
+    display: grid;
+    grid-template-rows: 70px 150px 300px 1fr;
+}
+.user-stats-cont h1{
+    color: white;
+    margin: 0;
+    padding: 15px;
+    border-bottom: 1px rgba(255, 255, 255, 0.71) solid;
+}
+.upper-stat{
+    margin: 15px;
+    margin-bottom: 0;
+    display: grid;
+    grid-template-rows: 1fr 1.4fr;
+    row-gap: 15px;
+}
+.wei-cal-cont{
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 15px;
+}
+.wei-cal-cont div{
+    background: rgba(255, 255, 255, 0.07);
+    border-radius: 15px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.301);
+    backdrop-filter: blur(12.7px);
+    -webkit-backdrop-filter: blur(12.7px);
+    border: 1px solid rgba(255, 255, 255, 0.34);
+}
+.macro-cont{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    background: rgba(255, 255, 255, 0.07);
+    border-radius: 15px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.301);
+    backdrop-filter: blur(12.7px);
+    -webkit-backdrop-filter: blur(12.7px);
+    border: 1px solid rgba(255, 255, 255, 0.34);
+    column-gap: 10px;
+    padding: 10px;
+}
+.week-graph{
+    margin: 15px;
+    background: rgba(255, 255, 255, 0.07);
+    border-radius: 15px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.301);
+    backdrop-filter: blur(12.7px);
+    -webkit-backdrop-filter: blur(12.7px);
+    border: 1px solid rgba(255, 255, 255, 0.34);
+    display: grid;
+    grid-template-columns: repeat(7,1fr);
+    column-gap: 10px;
+    padding: 15px;
+}
+.training-plan{
+    margin: 15px;
+    margin-top: 0;
+    background: rgba(255, 255, 255, 0.07);
+    border-radius: 15px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.301);
+    backdrop-filter: blur(12.7px);
+    -webkit-backdrop-filter: blur(12.7px);
+    border: 1px solid rgba(255, 255, 255, 0.34);
+}
+.wei-cont,.cal-cont{
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    padding-left: 15px;
+    color: white;
+    font-size: 26px;
+}
+.pro-cont,.carb-cont,.fat-cont{
+    background: rgba(0, 0, 0, 0.434);
+    border-radius: 10px;
+    backdrop-filter: blur(12.7px);
+    -webkit-backdrop-filter: blur(12.7px);
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    padding-left: 15px;
+    font-size: 22px;
+    color: white;
+}
+.bar-cont{
+    display: grid;
+    grid-template-rows: 1fr 20px;
+}
+.bar-cont span{
+    color: rgba(255, 255, 255, 0.815);
+    text-align: center;
+    padding-top: 5px;
+    font-size: 17px;
+}
+.bar{
+    background: rgba(0, 0, 0, 0.434);
+    border-radius: 10px;
+    backdrop-filter: blur(12.7px);
+    -webkit-backdrop-filter: blur(12.7px);
+    padding: 12px 15px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    column-gap: 7px;
+}
+.cal-bar{
+    height: 60%;
+    bottom: 0;
+    background-color: rgb(230,76,101);
+    border-radius: 15px;
+    align-self: flex-end;
+}
+.wei-bar{
+    height: 40%;
+    bottom: 0;
+    background-color: rgb(108,170,211);
+    border-radius: 15px;
+    align-self: flex-end;
+}
+.training-plan{
+    display: grid;
+    grid-template-columns: 1fr 1.3fr;
+    column-gap: 10px;
+}
+.wrk-overview{
+    margin: 10px;
+    background: rgba(255, 255, 255, 0.07);
+    border-radius: 10px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.301);
+    backdrop-filter: blur(12.7px);
+    -webkit-backdrop-filter: blur(12.7px);
+    border: 1px solid rgba(255, 255, 255, 0.34);
+    margin-right: 0;
+}
+.wrk-overview h2{
+    margin: 0;
+    padding: 7px 10px;
+    color: white;
+}
+.wrk-overview p{
+    margin: 0;
+    padding: 7px 15px;
+    font-size: 20px;
+    color: rgb(255, 230, 0);
+    background: rgba(0, 0, 0, 0.434);
+    border-radius: 10px;
+    margin: 0 10px;
+    backdrop-filter: blur(12.7px);
+    -webkit-backdrop-filter: blur(12.7px);
+    margin-bottom: 15px;
+}
+.sync-cont{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 25px;
+}
+.sync-cont button{
+    font-size: 20px;
+    font-weight: bold;
+    margin: 0 20px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 10px;
+    background-image: linear-gradient(90deg, rgba(255, 230, 0, 0.863), rgba(255, 230, 0, 0.74)),url(backlogin.png);
+}
+.sync-cont button:hover{
+    background-image: linear-gradient(90deg, rgb(255, 230, 0), rgb(255, 240, 103)),url(backlogin.png);
+}
+.wrk-plan{
+    margin: 10px;
+    background: rgba(255, 255, 255, 0.07);
+    border-radius: 10px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.301);
+    backdrop-filter: blur(12.7px);
+    -webkit-backdrop-filter: blur(12.7px);
+    border: 1px solid rgba(255, 255, 255, 0.34);
+    margin-left: 0;
+    overflow: hidden;
+}
+.wrk-plan h2{
+    color: white;
+    margin: 0;
+    font-size: 22px;
+    padding: 7px 12px;
+    border-bottom: 1px rgba(255, 255, 255, 0.774) solid;
+}
+
+.wrk-cont{
+    overflow-y: auto;
+    height: 240px;
+}
+.gen-day-cont{
+    background: rgba(255, 255, 255, 0.226);
+    border-radius: 20px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(12.7px);
+    -webkit-backdrop-filter: blur(12.7px);
+    border: 1px solid rgba(255, 255, 255, 0.144);
+    margin: 15px 10px;
+}
+.gen-day-cont h2{
+    font-size: 30px;
+    margin: 0px;
+    padding: 10px;
+    border-bottom: 3px solid rgba(255, 255, 255, 0.644); 
+}
+.gen-ex-cont{
+    border: 2px solid white;
+    border-radius: 10px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 10px 10px;
+}
+.gen-ex-cont h3{
+    display: block;
+    margin: 0;
+    padding: 7px 10px;
+    font-size: 20px;
+}
+.gen-ex-cont p{
+    display: block;
+    margin: 0;
+    font-size: 20px;
+    padding: 3px 15px;
+    color: rgb(255, 230, 0);
+}
+.common-cont{
+    padding: 10px;
+}
+.comm-fr-cont{
+    padding: 10px;
+    background: rgba(255, 255, 255, 0.226);
+    border-radius: 20px;
+    box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+    backdrop-filter: blur(12.7px);
+    -webkit-backdrop-filter: blur(12.7px);
+    border: 1px solid rgba(255, 255, 255, 0.144);
+    display: flex;
+    align-items: center;
+    justify-content: start;
+    margin-bottom: 10px;
+}
+.comm-fr-cont img{
+    height: 50px;
+    border-radius: 50%;
+}
+.comm-fr-cont h2{
+    font-size: 25px;
+    padding: 0;
+    margin: 0;
+    padding-left: 10px;
+    color: white;
+}
+@media (max-width:1400px) {
+    .interface{
+        grid-template-columns: 1fr;
+        grid-template-rows: 1fr 1fr;
+    }
+}
+@media (max-width:850px) {
+    .main{
+        grid-template-columns: 10vw 1fr;
+        column-gap: 2vw;
+        width: 100vw;
+        overflow-x: hidden;
+    }
+    .interface{
+        width: 85vw;
+        margin: 0;
+        height: fit-content;
+    }
+    .sidebar{
+        margin: 0;
+        margin-left: 1.2vw;
+    }
+    #logo{
+        height: 8vw;
+        margin: 0;
+        margin-top: 5vw;
+        margin-left: 1vw;
+    }
+    .sidebar button,#diet-plan,#home{
+        margin: 0;
+        height: 10vw;
+        width: 10vw;
+    }
+    .options{
+        margin-top: 10vw;
+        row-gap: 5vw;
+    }
+    .sidebar div img{
+        height: 7vw;
+    }
+    .main-cont{
+        margin: 3vw 0;
+        display: flex;
+        flex-direction: column;
+    }
+    .user-name-cont h1{
+        font-size: 5vw;
+    }
+    .upper{
+        width: 85vw;
+        display: flex;
+        justify-content: space-between;
+    }
+    .back-btn-cont button{
+        width: fit-content;
+        height: 100%;
+        font-size: 5vw;
+        padding: 2vw;
+    }
+    .lower{
+        grid-template-rows: 1fr 1fr;
+        grid-template-columns: 1fr;
+    }
+    .left{
+        width: 85vw;
+        margin-bottom: 3vw;
+    }
+    .right{
+        width: 85vw;
+    }
+    .prf-img-cont{
+        width: 79vw;
+        padding: 3vw;
+    }
+    .prf-img-cont img{
+        width: 70vw;
+        height: 70vw;
+    }
+    .friends-cont{
+        width: 85vw;
+    }
+    .nr-friends span{
+        font-size: 6vw;
+    }
+    .delete-friend-cont button{
+        font-size: 6vw;
+        width: fit-content;
+        padding: 2vw;
+    }
+    .user-stats-cont{
+        width: 85vw;
+        padding: 0;
+        height: fit-content;
+    }
+    .upper-stat{
+        padding: 0;
+        margin: 2vw;
+        width: 81vw;
+    }
+    .wei-cal-cont{
+        margin: 0;
+    }
+    .user-stats-cont h1{
+        font-size: 6vw;
+        width: 78vw;
+    }
+    .wei-cont,.cal-cont{
+        font-size: 4vw;
+    }
+    .pro-cont,.carb-cont,.fat-cont{
+        font-size: 3.5vw;
+        padding: 0;
+        padding-left: 2vw;
+    }
+    .week-graph{
+        margin: 2vw;
+        width: 74vw;
+    }
+    .bar{
+        padding: 2vw;
+    }
+    .wrk-overview,.wrk-plan{
+        height: fit-content;
+        padding-bottom: 2vw;
+    }
+    .training-plan{
+        margin: 2vw;
+        height: fit-content;
+    }
+    .gen-day-cont{
+        margin: 1vw;
+    }
+    .gen-ex-cont{
+        margin: 1vw;
+    }
+    .gen-ex-cont{
+        width: 31vw;
+        
+    }
+    .gen-ex-cont h3{
+        font-size: 4vw;
+    }
+    .gen-day-cont h2{
+        font-size: 5vw;
+    }
+}

@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <link rel="stylesheet" href="/css/goalspage.css">
+</head>
+<body>
+   <div class="main">
+      <div class="sidebar">
+         <div class="logo"><img src="../icons/logopic.png" id="logo"></div>
+         <div class="options">
+            <form action="/home" method="get"><button id="home"><img src="/icons/home.png"></button></form>
+            <form action="/workout" method="get"><button id="workout-plan"><img src="/icons/workout.png"></button></form>
+            <form action="/diet" method="get"><button id="diet-plan"><img src="/icons/meals.png"></button></form>
+            <button id="settings"><img src="/icons/settings.png"></button>
+         </div>
+      </div>
+      <div class="interface">
+         <div class="sidebar-settings">
+            <div class="sidebar-opts">
+               <div class="sidebar-title">This is&nbsp <span>Your Profile</span></div>
+               <div class="header-bts">
+                  <form class="opt-button-container" action="/settings">
+                     <button id="security-button button-sett">
+                        <img src="..\icons\user.png">
+                        <span>Edit Profile</span>
+                     </button>
+                  </form>
+                  <div class="opt-button-container">
+                     <button id="userdata-button button-sett">
+                        <img src="..\icons\goals.png">
+                        <span>Goals</span>
+                     </button>
+                  </div>
+               </div>
+            </div>
+            
+         </div>
+         <div class="goal-input-data">
+            <div class="user-data">
+               <div class="left">
+                  <div class="wei-part">
+                     <div class="wei-tit">Update your weight</div>
+                     <div class="wei-data">
+                        <div class="data-input">
+                           <input type="number" value="" class="stw-input">
+                           <span>
+                              Update you new starting weight
+                           </span>
+                           
+                        </div>
+                        <div class="data-input">
+                           <input type="number" value="" class="glw-input">
+                           <span>
+                              Update you next goal weight
+                           </span>
+                        </div>
+                        <div class="data-input inp-sel">
+                           <select name="Goal" class="goalsel">
+                              <option value="1">Select your Goal</option>
+                              <option value="2">Lose Weight</option>
+                              <option value="3">Mentain Weight</option>
+                              <option value="4">Gain Weight</option>
+                           </select>
+                           <span>
+                              Update your current goal
+                           </span>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="wei-part">
+                     <div class="wei-tit">Update your data</div>
+                     <div class="wei-data">
+                        <div class="data-input">
+                           <input type="number" value="" class="hei-input">
+                           <span>
+                              Set your current height(cm)
+                           </span>
+                           
+                        </div>
+                        <div class="data-input">
+                           <input type="number" value="" class="age-input">
+                           <span>
+                              Set your current age
+                           </span>
+                        </div>
+                        <div class="data-input inp-sel">
+                           <select name="ActivityLevel" class="actsel">
+                              <option value="1">Set an Activity Level</option>
+                              <option value="2">Not very Active</option>
+                              <option value="3">Ligtly Active</option>
+                              <option value="4">Active</option>
+                              <option value="5">Very Active</option>
+                           </select>
+                           <span>
+                              Set your new Activity Level
+                           </span>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <div class="right">
+                  <div class="calculators">
+                     <div class="cal-calc">
+                        <h1>Calculate your New Daily Intake!</h1>
+                        <select class="diet-type-sel">
+                           <option value="balanced">Select a Diet Type</option>
+                           <option value="balanced">Balanced Diet (C:40% / P:30% / F:30%)</option>
+                           <option value="keto">Ketogenic Diet (C:5% / P:25% / F:70%)</option>
+                           <option value="highpro">High-Protein Diet (C:30% / P:50% / F:20%)</option>
+                           <option value="lowcarb">Low-Carb Diet (C:20% / P:40% / F:40%)</option>
+                           <option value="vegan">Vegan Diet (C:50% / P:25% / F:25%)</option>
+                           <option value="carnivore">Carnivore Diet (C:0% / P:40% / F:60%)</option>
+                        </select>
+                        <div class="result-cont">
+                           <button class="calc-btn">Calculate!</button>
+                           <input placeholder="your new value" type="text" class="cal-res" readonly>
+                        </div>
+                     </div>
+                     <div class="bmi-calc">
+                        <h1>Your BMI (Body mass index)</h1>
+                        <div class="bmi-cont">
+                           <div class="bmi-parent">
+                              <div class="bmi-meter">
+                                 <div class="needle"></div>
+                                 <div class="cover"></div>
+                                 <div class="circ"></div>
+                              </div>
+                           </div>
+                           <input class="bmi-input" placeholder="Calculate your intake first" type="text" readonly>
+                        </div>
+                     </div>
+                  </div>
+                  <div class="submit-cont">
+                     <form action="/goalsPost" method="post">
+                        <div class="user-data-form">
+                           <input name="stW" class="stw-form">
+                           <input name="glW" class="glw-form">
+                           <input name="cal" class="cal-form">
+                           <input name="dietType" class="type-form">
+                        </div>
+                        <button class="save-change-btn">Save changes!</button>
+                     </form>
+                  </div>
+               </div>
+            </div>
+            <div class="secondary">
+               <form class="wrk-info" action="/postPlan" method="post">
+                  <h1><span style="color: rgb(255, 230, 0);">Create</span> your custom <span style="font-weight: bold;">Workout plan</span>!</h1>
+                  <div class="wrk-inf">
+                     <input name="wrkId" type="number" class="wrk-id">
+                     <input name="daysId" type="text" class="days-id">
+                  </div> 
+                  <button class="add-wrk-plan">+</button>
+               </form>
+               <div class="user-wrk-inps">
+                  <h2>Choose your prefered type of training</h2>
+                  <select class="type-sel">
+                     <option value="0">Select a type</option>
+                     <option value="1">Strength</option>
+                     <option value="2">Endurance</option>
+                     <option value="3">Gaining muscle</option>
+                     <option value="4">Losing weight</option>
+                  </select>
+                  <h2>Select the duration of your session</h2>
+                  <select class="dur-sel">
+                     <option value="0">Select an option</option>
+                     <option value="1">Quick</option>
+                     <option value="2">Moderate</option>
+                     <option value="3">Extended</option>
+                  </select>
+                  <h2>Pick the days you want to exercise on</h2>
+                  <div class="days">
+                     <div class="day">
+                        <span>Mon</span>
+                        <label class="container">
+                           <input type="checkbox" class="mon chk">
+                           <span class="checkmark"></span>
+                         </label>
+                     </div>
+                     <div class="day">
+                        <span>Tue</span>
+                        <label class="container">
+                           <input type="checkbox" class="tue chk">
+                           <span class="checkmark"></span>
+                         </label>
+                     </div>
+                     <div class="day">
+                        <span>Wed</span>
+                        <label class="container">
+                           <input type="checkbox" class="wed chk">
+                           <span class="checkmark"></span>
+                         </label>
+                     </div>
+                     <div class="day">
+                        <span>Thu</span>
+                        <label class="container">
+                           <input type="checkbox" class="thu chk">
+                           <span class="checkmark"></span>
+                         </label>
+                     </div>
+                     <div class="day">
+                        <span>Fri</span>
+                        <label class="container">
+                           <input type="checkbox" class="fri chk">
+                           <span class="checkmark"></span>
+                         </label>
+                     </div>
+                     <div class="day">
+                        <span>Sat</span>
+                        <label class="container">
+                           <input type="checkbox" class="sat chk">
+                           <span class="checkmark"></span>
+                         </label>
+                     </div>
+                     <div class="day">
+                        <span>Sun</span>
+                        <label class="container">
+                           <input type="checkbox" class="sun chk">
+                           <span class="checkmark"></span>
+                        </label>
+                     </div>
+                  </div>
+                  <div class="create-cont">
+                     <button class="create-btn">Generate my Workout!</button>
+                  </div>
+               </div> 
+               <div class="generated">
+                  
+               </div>
+            </div>
+         </div>
+      </div>
+      <div class="user-data-set">
+         <div class="user-cals">
+         </div>
+         <div class="user-start-wei">
+         </div>
+         <div class="user-goal-wei">
+         </div>
+         <div class="user-gender"></div>
+      </div>
+   </div>
+   <script type="module" src="/js/goalspage.js">
+   </script>
+</body>
+</html>

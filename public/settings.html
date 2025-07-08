@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+   <link href="/css/settings.css" rel="stylesheet">
+   <script src="/socket.io/socket.io.js"></script>
+</head>
+<body>
+   <div class="main">
+      <div class="sidebar">
+         <div class="logo"><img src="/icons/logopic.png" id="logo"></div>
+         <div class="options">
+            <form action="/home" method="get"><button id="home"><img src="/icons/home.png"></button></form>
+            <form action="/workout" method="get"><button id="workout-plan"><img src="/icons/workout.png"></button></form>
+            <form action="/diet" method="get"><button id="diet-plan"><img src="/icons/meals.png"></button></form>
+            <button id="settings"><img src="/icons/settings.png"></button>
+         </div>
+      </div>
+      <div class="interface">
+         <div class="left">
+            <div class="sidebar-settings">
+               <div class="sidebar-opts">
+                  <div class="sidebar-title">This is&nbsp <span>Your Profile</span></div>
+                  <div></div>
+                  <div class="opt-bts">
+                     <div class="opt-button-container">
+                        <button id="security-button button-sett">
+                           <img src="\icons\user.png">
+                           <span>Edit Profile</span>
+                        </button>
+                     </div>
+                     <form class="opt-button-container" action="/goals">
+                        <button id="userdata-button button-sett">
+                           <img src="\icons\goals.png">
+                           <span>Goals</span>
+                        </button>
+                     </form>
+                  </div>
+               </div>
+            </div>
+            <div class="user-info">
+               <div class="prf-image-container">
+                  <div class="image-part">
+                     <img src="" id = "image">
+                     <div class="image-opts">
+                        <label for="fileImg" id="fileLabel">Edit Image</label>
+                        <form action="/deleteimg" method="post" id="form" enctype="multipart/form-data">
+                           <button id="delete-btn" name="deleteImg" value="123">
+                              <img id="delete-img" src="/icons/images.png">
+                           </button>
+                        </form>
+                        <form action="/upload" method="post" id="form1" enctype="multipart/form-data">
+                           <input type="file" name="fileImg" id = "fileImg" accept=".jpg, .jpeg, .png">
+                        </form>
+                     </div>
+                     <form id="delete-cont" action="/deleteAcc" method="post">
+                        <input type="submit" id="delete-acc" name="delete-acc" value="Delete Account">
+                     </form>
+                     
+                  </div> 
+               </div>
+               <form class="user-credentials" action="/changepass" method="POST">
+                  <div class="info-tit">Your Information</div>
+                  <div class="actual-info">
+                     <div class="data-container">
+                        <span>Username</span>
+                        <input type="text" readonly id="usinp" value="" name>
+                     </div>
+                     <div class="data-container">
+                        <span>E-mail</span>
+                        <input type="text" id="eminp" name="eminp" readonly value="">
+                     </div>
+                     <div class="data-container data-pass">
+                        <span id="pass-span">Enter your old Password</span>
+                        <div class="pass-inps">
+                           <input type="password" name="passinp" id="passinp" value="" required>
+                           <button class="show-pass" type="button">
+                              <img src="\icons\password.png">
+                           </button>
+                        </div>
+                     </div>
+                     <div class="data-container data-pass">
+                        <span id="pass-span">Enter your new Password</span>
+                        <div class="pass-inps">
+                           <input type="password" name="passinpnew" id="passinpnew" value="" required>
+                           <button class="show-pass-new" type="button">
+                              <img src="\icons\password.png">
+                           </button>
+                        </div>
+                        
+                     </div>
+                     <span class="possible-errors"></span>
+                     <div class="buttons-cont">
+                        <div class="small-opt">
+                           <button id="chpass">Change Password</button>
+                           <button id="chemail" type="button">Change Email</button>
+                        </div>
+                        
+                     </div>
+                  </div>
+               </form>
+            </div>
+         </div>
+         <div class="right">
+            <div class="friends-list-title">
+               <img src="/icons/friends.png">
+               Friends
+            </div>
+            <div class="selector">
+               <button class="friends-btn">View Friends</button>
+               <button class="pending-btn">Friend requests</button>
+            </div>
+            <div class="friends-list-container">
+               <div class="friends-cont">
+                  <form class="delete-box" action="/deletefriend" method="post">
+                     <div class="close-cont-del">
+                        <button class="close-box-del" type="button">
+                           <img src="icons/close-arrow.png">
+                        </button>
+                     </div>
+                     
+                     <p>Do you want to remove this friend?</p>
+                     <input type="text" readonly name="delName" value="" id="del-name-acc"> 
+                     <div class="del-buttons">
+                        <button class="acc" name="acc">&#10004</button>
+                        <button class="decl" name="rej">&#10006</button>
+                     </div>
+                  </form>
+               </div>
+               <div class="request-cont">
+                  <div class="add-friend">
+                     <h2>Send a friend request</h2>
+                     <form class="search-user-cont" action="/sendreq" method="post">
+                        <input type="text" name='reciverAdd' placeholder="Enter an Username" class="send-req-inp">
+                        <button class="send-req-btn">+</button>
+                     </form>
+                     <p class="error-message"></p>
+                  </div>
+                  <div class="pending-req">
+                     <h2>Recived requests</h2>
+                     <div class="requests"></div>
+                     <form class="accept-box" action="/acceptreq" method="post">
+                        <div class="close-cont">
+                           <button class="close-box" type="button">
+                              <img src="icons/close-arrow.png">
+                           </button>
+                        </div>
+                        
+                        <p>Do you want to accept this friend request?</p>
+                        <input type="text" readonly name="reqName" value="" id="req-name-acc">
+                        <div class="acc-buttons">
+                           <button class="acc" name="acc">&#10004</button>
+                           <button class="decl" name="rej">&#10006</button>
+                        </div>
+                     </form>
+                  </div>
+               </div>
+            </div>
+         </div>
+         
+      </div>
+      
+   </div>
+   <script src="/js/settings.js"></script>
+   <script>
+      function getErr(){
+         const urlObj=new URL(window.location.href);
+         const params=new URLSearchParams(urlObj.search)
+         const error=params.get('err')
+         if(params.get("err")){
+            if(error){
+               document.querySelector('.possible-errors').innerHTML=error;
+            }
+         }
+         const result=params.get('result')
+         if(params.get('result')){
+            if(result){
+               document.querySelector('.error-message').innerHTML=result
+            }
+         }
+      }
+      window.onload=getErr;
+   </script>
+   <script>
+      document.getElementById("fileImg").onchange = function(){
+          document.getElementById("form1").submit();
+      };
+   </script>
+   <script>
+      let userId='';
+      function fetchData(){
+         return fetch('/data')
+            .then(response=>response.json())
+            .then(data=>{
+               userId=data[0].user
+            })
+            .catch(error=>console.log(error))
+      }
+      function runNotif(){
+         const socket = io();
+         socket.emit("register", userId);
+         socket.on("reciveNotif", (message) => {
+            new Notification("New Notification", { body: message });
+         });
+
+         if (Notification.permission !== "granted") {
+            Notification.requestPermission();
+         }
+
+         //aici va veni mesaj la mesagerie
+         function sendFriendsReqNotif(userId,reciver) {
+            socket.emit("sendNotif", { userId: reciver, message: `You recived a friend request from ${userId}!` });
+         } 
+         document.querySelector('send-req-btn').addEventListener('click',()=>{
+            const reciver=document.querySelector('.send-req-inp').value;
+            sendFriendsReqNotif(userId,reciver);
+         })
+      }
+      fetchData().then(data=>runNotif());
+   </script>
+</body>
+</html>
+

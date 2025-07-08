@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <link href="/css/mainpage.css" rel="stylesheet">
+      <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+      <script src="/socket.io/socket.io.js"></script>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   </head>
+   <body>
+    
+      <div class="backg">
+         <div class="fund"></div>
+      </div>
+         <div class="main">
+            <div class="sidebar">
+               <div class="logo"><img src="/icons/logopic.png" id="logo"></div>
+               <div class="options">
+                  <button id="home"><img src="/icons/home.png"></button>
+                  <form action="/workout" method="get"><button id="workout-plan"><img src="/icons/workout.png"></button></form>
+                  <form action="/diet" method="get"><button id="diet-plan"><img src="/icons/meals.png"></button></form>
+                  <form action="/settings" method="get"><button id="settings"><img src="/icons/settings.png"></button></form>
+               </div>
+            </div>
+            <div class="home-page" id="home-page">
+               <div class="interface">
+                  <div class="header">
+                     <div class="greetings">
+                        <div class="welcome-small">Great day to train, buddy!</div>
+                        <div class="welcome">
+                           <span>Welcome back, </span>
+                           <span id="userNameCont"></span>
+                        </div>
+                     </div>
+                     <div class="user">
+                        <div class="urprf">
+                           <div class="dropdown">
+                              <button class="dropbtn">My Profile</button>
+                              <div class="dropdown-content">
+                                 <form  action="/settings" method="get">
+                                    <input type="submit" name="viewprof" value="View Profile">
+                                 </form>
+                                 <form action="/logout" method="GET">
+                                    <input type="submit" name="logout" value="Log Out">
+                                 </form>
+                              </div>
+                           </div>
+                        </div>
+                        <button class="profilepic-btn">
+                           <img src="/icons/user.png" class="profilepic">
+                        </button>
+                        
+                     </div>
+                  </div>
+                  <div class="activity">
+                     <div class="upper">
+                        <div class="quote-container">
+                           <div class="quote">
+                              <div class="quote-text">
+                                 "Strength does not come from the physical capacity. It comes from an indomitable will."
+                              </div>
+                              <div class="generate">
+                                 <button class="generate-btn">
+                                    Motivate me!
+                                 </button>
+                              </div>
+                           </div>
+                           <div class="quote-image-container">
+                              <img id="im3" src="/icons/quote3.png">
+                           </div>
+                        </div>
+                        <div class="progress-bars">
+                           <div class="intake-container">
+                              <div class="cal-image-cnt">
+                                 <img src="/icons/calories.png" class="caloimg">
+                              </div>
+                              <div class="intake-text">
+                                 <div class="togo-tit">Calories</div>
+                                 <div class="togocals"></div>
+                              </div>
+                              <div class="intake-circle">
+                                 <div class="outer">
+                                    <div class="inner">
+                                       <div id="calories-number"></div>
+                                    </div>
+                                 </div>
+                                 <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="120px" height="120px" class="circlecal">
+                                    <circle cx="55" cy="55" r="45" stroke-linecap="round" />
+                                 </svg>
+                                 
+                              </div>
+                           </div>
+                           <div class="burned-container">
+                              <div class="weightsc-cnt">
+                                 <img class="weightsc" src="/icons/weighing-scale.png">
+                              </div>
+                              <div class="weight-text">
+                                 <div class="togo-tit">Weight</div>
+                                 <div class="togokg">Weight</div>
+                              </div>
+                              <div class="weight-circle">
+                                 <div class="outer">
+                                    <div class="inner">
+                                       <div id="weight-number"></div>
+                                    </div>
+                                 </div>
+                                 <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="120px" height="120px" class="circlewei">
+                                    <circle cx="55" cy="55" r="45" stroke-linecap="round" />
+                                 </svg>
+                              </div>
+                           </div>
+                        </div>
+                     </div>
+                     <div class="names">
+                        <div class="todact">Today's Activity</div>
+                        <div class="progrec">Recent Progress</div>
+                     </div>
+                     <div class="wrk-container">
+                        <div class="today-activity">
+                           <div class="add-workout">
+                              <div class="visualworkout">
+                                 <button>
+                                    <img src="/icons/workoutimg.png" id="work">
+                                 </button>
+                                 
+                                 <div class="work-container">
+                                    <p>Today I burned</p>
+                                    <p id="burned-cals">
+                                       
+                                    </p>
+                                    <p>out of</p>
+                                    <p id="goal-burned-cals">
+                                       500 kcal
+                                    </p>
+                                 </div>
+                              </div>
+                              <div class="exercises">
+                                 <div class="weight-train">
+                                    <img src="/icons/plate.png">
+                                    <p>Weightlifting</p>
+                                    <span id="nrsets"></span>
+                                 </div>
+                                 <div class="cardio">
+                                    <img src="/icons/rope.png">
+                                    <p>Cardio</p>
+                                    <span id="nrmins"></span>
+                                 </div>
+                              </div>
+                           </div>
+                           <div class="add-meal">
+                              <div class="visualmeal">
+                                 <button>
+                                    <img src="/icons/meal.png" id="meal">
+                                 </button>
+                                 
+                                 <div class="consumed-container">
+                                    <p>Today I consumed</p>
+                                    <p class="consumed-cals">
+                                       2000 kcal
+                                    </p>
+                                    <p>out of</p>
+                                    <p class="goal-cals">
+                                       
+                                    </p>
+                                 </div>
+                              </div>
+                              <div class="macros">
+                                 <div class="pro">
+                                    <span>Protein: </span>
+                                    <span class="grams programs"></span>
+                                    <div class="probar"></div>
+                                 </div>
+                                 <div class="carb">
+                                    <span>Carbs: </span>
+                                    <span class="grams carbgrams"></span>
+                                    <div class="carbbar"></div>
+                                 </div>
+                                 <div class="fat">
+                                    <span>Fats: </span>
+                                    <span class="grams fatgrams"></span>
+                                    <div class="fatbar"></div>
+                                 </div>
+                              </div>
+                           </div>
+                           <form class="add-weight" action="/getCurrWei" method="post">
+                              <div class="add-weight-img">
+                                 <img src="/icons/update-weight.png">
+                              </div>
+                              <div class="add-weight-text">
+                                 Today I weigh
+                              </div>
+                              <div class="add-weightkg-text">
+                                 <input type="number" step="0.01" placeholder="(kg)" name="todayBw">
+                              </div>
+                              <button class="add-weight-btn">
+                                 Update Bodyweight
+                              </button>
+                           </form>
+                        </div>
+                        <div class="recent-progress">
+                           <div class="bars-days">
+                              <div class="0" id="bar">
+                                 <div class="cal0 cal"></div>
+                                 <div class="wei0 wei"></div>
+                              </div>
+                              <span class="bar-text">Mon</span>
+                           </div>
+                           <div class="bars-days">
+                              <div class="1" id="bar">
+                                 <div class="cal1 cal"></div>
+                                 <div class="wei1 wei"></div>
+                              </div>
+                              <span class="bar-text">Tue</span>
+                           </div>
+                           <div class="bars-days">
+                              <div class="2" id="bar">
+                                 <div class="cal2 cal"></div>
+                                 <div class="wei2 wei"></div>
+                              </div>
+                              <span class="bar-text">Wed</span>
+                           </div>
+                           <div class="bars-days">
+                              <div class="3" id="bar">
+                                 <div class="cal3 cal"></div>
+                                 <div class="wei3 wei"></div>
+                              </div>
+                              <span class="bar-text">Thu</span>
+                           </div>
+                           <div class="bars-days">
+                              <div class="4" id="bar">
+                                 <div class="cal4 cal"></div>
+                                 <div class="wei4 wei"></div>
+                              </div>
+                              <span class="bar-text">Fri</span>
+                           </div>
+                           <div class="bars-days">
+                              <div class="5" id="bar">
+                                 <div class="cal5 cal"></div>
+                                 <div class="wei5 wei"></div>
+                              </div>
+                              <span class="bar-text">Sat</span>
+                           </div>
+                           <div class="bars-days">
+                              <div class="6" id="bar">
+                                 <div class="cal6 cal"></div>
+                                 <div class="wei6 wei"></div>
+                              </div>
+                              <span class="bar-text">Sun</span>
+                           </div>
+                        </div>
+                     </div>
+                  </div>
+               </div>
+               <div class="chatbot">
+                  <div id="friends">
+                     <div class="friends1">
+                        <div class="friends-header">
+                           <img src="/icons/friends.png">
+                           <span id="li-name"> Friends List</span>
+                           
+                        </div>
+                        <input type="text" class="search-friend" placeholder="Search for a friend">
+                        <div class="friends-list">
+                           
+                        </div>
+                     </div>
+                     <div class="message-cont">
+                        <div class="message-header">
+                           <button class="back-btn">&#129120;</button>
+                           <h1 class="fr-name-head">mena</h1>
+                        </div>
+                        <div class="messages">
+                           
+                        </div>
+                        <div class="inputs">
+                           <input type="text" class="input-message" placeholder="Message...">
+                           <button class="send-button">
+                              <img src="/icons/send.png">
+                           </button>
+                        </div>
+                     </div>
+                  </div>
+                  
+                  
+               </div>
+            </div>
+            
+         </div>
+        <div class="user-infos">
+            <div class="user-cals">
+            </div>
+            <div class="user-start-wei">
+            </div>
+            <div class="user-goal-wei">
+            </div>
+            <div class="user-curr-wei">
+            </div>
+            <div class="user-curr-cal">
+            </div>
+            <div class="user-curr-pro">
+            </div>
+            <div class="user-curr-fat">
+            </div>
+            <div class="user-curr-carb">
+            </div>
+            <div class="user-curr-burned">
+            </div>
+            <div class="user-curr-sets">
+            </div>
+            <div class="user-curr-mins">
+            </div>
+            <div class="weight-days">
+               <div class="mon"></div>
+               <div class="tue"></div>
+               <div class="wed"></div>
+               <div class="thu"></div>
+               <div class="fri"></div>
+               <div class="sat"></div>
+               <div class="sun"></div>
+            </div>
+            <div class="cal-days">
+               <div class="monc"></div>
+               <div class="tuec"></div>
+               <div class="wedc"></div>
+               <div class="thuc"></div>
+               <div class="fric"></div>
+               <div class="satc"></div>
+               <div class="sunc"></div>
+            </div>
+         </div>
+
+
+      
+      <script src="/js/quote.js"></script>
+      <script type="module" src="/js/add-weight.js"></script>
+      <script>
+         let userId='';
+         function fetchData(){
+            return fetch('/data')
+               .then(response=>response.json())
+               .then(data=>{
+                  userId=data[0].user
+               })
+               .catch(error=>console.log(error))
+         }
+         function runNotif(){
+            const socket = io();
+            // Replace with actual user ID
+            console.log(userId)
+            socket.emit("register", userId);
+   
+            socket.on("receiveNotification", (message) => {
+               new Notification("New Notification", { body: message });
+            });
+   
+            if (Notification.permission !== "granted") {
+               Notification.requestPermission();
+            }
+
+            //aici va veni mesaj la mesagerie
+            function sendNotification() {
+               socket.emit("sendNotif", { userId: 'user123', message: "Hello! This is a test notification." });
+            } 
+         }
+         fetchData().then(data=>runNotif());
+         
+     </script>
+     <script>
+         const socket=io();
+         let myUsername="";
+     </script>
+      
+</html>

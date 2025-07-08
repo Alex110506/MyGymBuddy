@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <link rel="stylesheet" href="/css/login.css">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   </head>
+   <body>
+      <div class="main-body">
+         <div class="logo-container">
+            <img src="/css/logo.png">
+         </div>
+         <div class="form-box">
+            <div class="button-box">
+               <div id="btn"></div>
+               <div class="button-box1">
+                  <button type="button" class="toggle-btn" onclick="loginn()">
+                     Log In
+                  </button>
+                  <button type="button" class="toggle-btn" onclick="registerr()">
+                     Register
+                  </button>
+               </div>
+               
+            </div>
+            <form id="login" class="input-group" action="/login" method="post">
+               <div class="credentials">
+                  <input id="usernamelog" type="text" class="input-field" name="usernamelog" placeholder="Username" required>
+                  <input type="password" name="passwordlog" class="input-field" placeholder="Password" required>
+                  
+                  <div class="check">
+                     <input type="checkbox" class="check-box">
+                     <div class="check-text">Remember Me</div>
+                  </div>
+               </div>
+               <button type="submit" class="submit-btn logi" name="login">Log In</button>
+            </form>
+            <form id="register" class="input-group" action="/signup" method="post">
+               <div class="credentials">
+                  <input type="text" class="input-field" name="username" placeholder="Create Username" required>
+                  <input type="email" name="Email"  class="input-field" placeholder="E-mail" required>
+                  <input type="password" name="password"  class="input-field" placeholder="Password (min. 8 characters)" id="passkey2" required>
+               </div>
+               <p class="pass-sec1 sect">&#10005; Password must contain 8 or more characters.</p>
+               <p class="pass-sec2 sect">&#10005; Password must contain uppercase and lowercase letters.</p>
+               <p class="pass-sec3 sect">&#10005; Password must contain digits.</p>
+               <p class="pass-sec4 sect">&#10005; Password must contain a symbol. (e.g. !,@,#,$,%,^,&,*,-,_)</p>
+               <button type="button" class="submit-btn regis" name="register">Register</button>
+            </form>
+            <script src="/js/login.js"></script>
+            <div class="possible-errors">
+            </div>
+         </div>
+      </div>
+      <script>
+
+         function getErr(){
+            const urlObj=new URL(window.location.href);
+            const params=new URLSearchParams(urlObj.search)
+            const error=params.get('err')
+            if(params.get("err")){
+               if(error){
+               document.querySelector('.possible-errors').innerHTML=error;
+            }
+            }
+            
+         }
+         window.onload=getErr;
+
+        
+     </script>
+     
+   </body>
+</html>
+
+

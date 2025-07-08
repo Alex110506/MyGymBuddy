@@ -1,0 +1,184 @@
+body{
+   margin: 0;
+   padding: 0;
+   font-family: sans-serif;
+   
+}
+
+.main-body{
+   height: 100vh;
+   background-image: linear-gradient(135deg, rgba(0, 0, 0,1), rgba(16, 28, 95, 0.788), rgba(0, 0, 0,1)),url(backlogin.png);
+   background-size: cover;
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+   overflow: hidden;
+}
+.logo-container{
+   position: relative;
+   max-width: 650px;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   margin-bottom: 50px;
+}
+.logo-container img{
+   max-width: 650px;
+   width: 90%;
+}
+.form-box{
+   max-width: 600px;
+   width: 90%;
+   height: 460px;
+   position: relative;
+   background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0));
+   backdrop-filter: blur(10px);
+   -webkit-backdrop-filter: blur(10px);
+   border-radius: 20px;
+   border:1px solid rgba(255, 255, 255, 0.18);
+   box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
+   padding: 5px;
+   border-radius: 30px;
+   display: flex;
+   flex-direction: column;
+   padding-top: 40px;
+   align-items: center;
+   overflow: hidden;
+}
+.button-box{
+   width: 320px;
+   height: 50px;
+   margin-left:auto;
+   margin-right: auto;
+   position: relative;
+   box-shadow: 0 0 20px 9px rgba(18, 6, 37, 0.3);
+   border-radius: 30px;
+}
+.toggle-btn{
+   padding: 20px 57px;
+   cursor: pointer;
+   background:transparent;
+   border:0;
+   outline: none;
+   position: relative;
+   color: rgb(178, 145, 255);
+}
+#btn{
+   top:0;
+   left:0;
+   position: absolute;
+   width: 160px;
+   height: 100%;
+   background-image: linear-gradient(135deg, rgb(72, 74, 179), rgba(19, 8, 94, 0.753));
+   border-radius: 100px;
+   transition: 0.5s;
+}
+#register{
+   overflow-y: auto;
+}
+.input-group{
+   top: 40px;
+   width: 450px;
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   align-items: center;
+}
+.input-group p{
+   align-self: flex-start;
+}
+.credentials{
+   display: inline-block;
+   width: 330px
+}
+.input-field{
+   width: 100%;
+   max-width: 330px;
+   align-self: center;
+   padding: 10px 0;
+   margin: 5px 0;
+   margin-left: auto;
+   margin-right: auto;
+   border-left:0;
+   border-right: 0;
+   font-size: 20px;
+   border-top:0;
+   border-bottom: 1px solid #a9a3c4;
+   outline: none;
+   background: transparent;
+   color: rgb(220, 207, 255);
+}
+.submit-btn{
+   width: 85%;
+   padding: 20px 30px;
+   cursor: pointer;
+   display: block;
+   margin-top:20px;
+   background-image: linear-gradient(135deg, rgb(104, 72, 179), rgb(20, 8, 94));
+   border:0;
+   outline: none;
+   border-radius: 30px;
+   color: rgb(202, 195, 255);
+   font-size:17px
+}
+.submit-btn:active{
+   color: white;
+}
+.check-box{
+   margin:30px 10px 30px 0px;
+   
+}
+.check-text{
+   margin:30px 10px 30px 0px;
+   color: rgb(163, 157, 207);
+}
+span{
+   color: #777;
+   bottom:68px;
+   position: absolute;
+}
+#login{
+   position: relative;
+   visibility: visible;
+}
+#register{
+   visibility: hidden;
+   position: absolute;
+}
+.check{
+   display: grid;
+   grid-template-columns: 30px 1fr;
+}
+.possible-errors{
+   text-align: center;
+   position: absolute;
+   top: 90px;
+   color: rgba(255, 255, 255, 0.664);
+   font-size: 20px;
+   padding-top: 15px;
+}
+.sect{
+   color: rgb(255, 120, 120);
+   margin: 0;
+   margin-top: 4px;
+}
+
+@media (max-width:700px) {
+   .input-group{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+   }
+   
+}
+@media (max-width:550px) {
+   .sect{
+      font-size: 3vw;
+      align-self: center;
+      text-align: center;
+   }
+   .input-group{
+      width: 100%;
+   }
+}
