@@ -66,27 +66,36 @@ function requireLogin(req, res, next) {
 
 
 app.post('/signup', (req, res) => {
-    const { username, Email, password } = req.body;
-    bcrypt.hash(password, 10, (err, hash) => {
-        if (err) throw err;
-        const query1='SELECT * FROM usercredentials WHERE user=?'
-        db.query(query1,[username],(err,result)=>{
-            if(err) throw err;
-            if(result.length>0){
-                res.status(409).redirect('/loginPage?err=User already exists!');
-            } else{
-                const query = 'INSERT INTO usercredentials (user, email, password) VALUES (?, ?, ?)';
-                db.query(query, [username, Email, hash], (err, result) => {
-                    if (err){
-                        throw err
-                    };
-                    req.session.userId = username;
-                    res.status(200).redirect('/details')
-                });
-            }
-        })
+  const { username, Email, password } = req.body;
+  
+  bcrypt.hash(password, 10, (err, hash) => {
+    if (err) {
+      // Handle hashing error properly
+      return res.status(500).send('Error hashing password');
+    }
+
+    const query1 = 'SELECT * FROM usercredentials WHERE user=?';
+    db.query(query1, [username], (err, result) => {
+      if (err) {
+        return res.status(500).send('Database error');
+      }
+
+      if (result.length > 0) {
+        return res.status(409).redirect('/loginPage?err=User already exists!');
+      } else {
+        const query = 'INSERT INTO usercredentials (user, email, password) VALUES (?, ?, ?)';
+        db.query(query, [username, Email, hash], (err, result) => {
+          if (err) {
+            return res.status(500).send('Error inserting user');
+          }
+          req.session.userId = username;
+          return res.status(200).redirect('/details');
+        });
+      }
     });
+  });
 });
+
 
 app.post('/login', (req, res) => {
     const {usernamelog,passwordlog}=req.body;
