@@ -16,7 +16,7 @@ dotenv.config({ path: './.env' });
 
 const app = express();
 const server=http.createServer(app);
-const port = 5000;
+const port = process.env.PORT || 5000;
 
 const io=socketIo(server,{
     cors:{
