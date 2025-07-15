@@ -39,11 +39,12 @@ app.use(bodyParser.urlencoded({extended:true}));
 app.use(express.static('public'));
 
 const db = mysql.createConnection({
-    host: process.env.MYSQLHOST,
-    user: process.env.MYSQLUSER,
-    password: process.env.MYSQLPASSWORD,
-    database: process.env.MYSQLDATABASE,
-    port: process.env.MYSQLPORT, // Optional, but good practice
+    host: process.env.MYSQL_HOST || 'localhost',
+    port: process.env.MYSQL_PORT || 3306,
+    user: process.env.MYSQL_USER || 'root',
+    password: process.env.MYSQL_PASSWORD || '',
+    database: process.env.MYSQL_DATABASE || 'railway_test',
+    ssl: process.env.NODE_ENV === 'production' ? { rejectUnauthorized: false } : false,
     multipleStatements: true
 });
 
