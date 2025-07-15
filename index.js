@@ -160,16 +160,18 @@ app.get('/details',(req,res)=>{
     res.sendFile(__dirname+'/public/fillcreds.html')
 })
 
-app.post('/details',(req,res)=>{
-    const {stW,glW,ress,Gender}=req.body;
-    const id=req.session.userId
-    const query='UPDATE usercredentials SET calGoal=?, enterData=true, startW=? , goalW=? , todayBw=?,gender=? WHERE user=?';
-    db.query(query, [ress,stW,glW,stW,Gender,id], (err, result) => {
-        if (err) res.status(500).send(`There wa an error ${err}`);
-        res.status(200).redirect('/home')
-    });
+app.post('/details', (req, res) => {
+  const { stW, glW, ress, Gender } = req.body;
+  const id = req.session.userId;
+  const query = 'UPDATE usercredentials SET calGoal=?, enterData=true, startW=?, goalW=?, todayBw=?, gender=? WHERE user=?';
 
-})
+  db.query(query, [ress, stW, glW, stW, Gender, id], (err, result) => {
+    if (err) {
+      return res.status(500).send(`There was an error: ${err}`);
+    }
+    res.status(200).redirect('/home');
+  });
+});
 
 //CHANGE PASSWORD
 
