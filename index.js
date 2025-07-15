@@ -38,23 +38,20 @@ app.use(bodyParser.urlencoded({extended:true}));
 
 app.use(express.static('public'));
 
-const db = mysql.createConnection({
-    host: process.env.MYSQLHOST || 'localhost',
-    port: process.env.MYSQLPORT || 3306,
-    user: process.env.MYSQLUSER || 'root',
-    password: process.env.MYSQLPASSWORD || '',
-    database: process.env.MYSQLDATABASE || 'railway_test',
-    ssl: process.env.NODE_ENV === 'production' ? { rejectUnauthorized: false } : false,
+const db = mysql.createPool({
+    host: process.env.DATABASE_HOST,
+    user: process.env.DATABASE_USER,
+    password: process.env.DATABASE_PASSWORD,
+    database: process.env.DATABASE,
+    waitForConnections: true,
+    connectionLimit: 10,
+    queueLimit: 0,
     multipleStatements: true
 });
 
-db.connect((err) => {
-    if(err){
-        console.log(err);
-    }else{
-        console.log("MYSQL Connected...");
-    }
-});
+console.log("MySQL pool created and ready.");
+
+module.exports = db;
 
 // Display the login page
 app.get('/loginPage', (req, res) => {
