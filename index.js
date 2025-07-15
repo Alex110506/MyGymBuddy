@@ -172,9 +172,11 @@ app.get('/details',(req,res)=>{
 app.post('/details', (req, res) => {
   const { stW, glW, ress, Gender } = req.body;
   const id = req.session.userId;
+  const newress=ress.split(" ");
+  const ress1=Number(newress[0])
   const query = 'UPDATE usercredentials SET calGoal=?, enterData=true, startW=?, goalW=?, todayBw=?, gender=? WHERE user=?';
-
-  db.query(query, [ress, stW, glW, stW, Gender, id], (err, result) => {
+    
+  db.query(query, [ress1, stW, glW, stW, Gender, id], (err, result) => {
     if (err) {
       return res.status(500).send(`There was an error: ${err}`);
     }
