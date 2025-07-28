@@ -834,6 +834,7 @@ body{
    }
    .info-tit{
       font-size: 6vw;
+      margin-top: 50px;
       padding-left: 2vw;
    }
    .data-container,.data-pass{
@@ -887,7 +888,7 @@ body{
       margin: 0;
       padding: 0;
       margin-bottom: 3vw;
-      height: 100vh;
+      height: 80vh;
    }
 }
 
