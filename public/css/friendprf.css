@@ -21,6 +21,9 @@ body{
     display: grid;
     grid-template-columns: 2fr 1.4fr;
 }
+.wrk-length{
+    display: none;
+}
 .sidebar{
     background-color: rgb(0, 0, 0);
     margin-top: 20px;
