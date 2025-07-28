@@ -1,0 +1,18 @@
+Titlul proiectului: MyGymBuddy
+
+Autor: Rădulescu Alexandru Marius
+
+Componente externe utilizate:
+
+---Imagini:
+
+Toate imaginile care se regăsesc in folder-ul /public/icons din codul sursă
+Alte 2 imagini preluate de pe internet se regăsesc in folder-ul /public/css al codului sursă
+
+---Cod sursă generat de AI:
+
+Lista de alimente predefinite din fișierul /public/js/mealarray.js – Generat cu ajutorul ChatGPT – Au fost aduse mici ajustări codului pentru funcționalitate.
+
+Lista de exerciții predefinite din fișierul /public/js/exerciselist.js – Generat cu ajutorul ChatGPT – Au fost aduse mici ajustări codului pentru funcționalitate.
+
+Lista de antrenamente predefinite din fișierul /public/js/workoutplans.js – Generat cu ajutorul ChatGPT – Au fost aduse mici ajustări codului pentru funcționalitate.
