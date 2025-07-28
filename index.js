@@ -10,7 +10,8 @@ const multer=require('multer');
 const socketIo=require('socket.io');
 const cors=require('cors');
 const cron=require('node-cron');
-const { read } = require('fs');
+const {read}=require('fs');
+const rateLimit=require("express-rate-limit")
 
 dotenv.config({ path: './.env' });
 
@@ -26,31 +27,49 @@ const io=socketIo(server,{
 })
 
 app.use(session({
-    secret:'your-secret-key',
+    secret:process.env.SESSION_SECRET,
     resave:false,
-    saveUninitialized:true
+    saveUninitialized:true,
+    cookie: {
+        httpOnly: true,
+        secure: false,
+        maxAge: 1000 * 60 * 60,
+    },
 }))
 
 app.use(cors())
 app.use(express.json());
-// Middleware
 app.use(bodyParser.urlencoded({extended:true}));
+
+const limiter = rateLimit({
+    windowMs: 15*60*1000,
+    max: 100,
+    message: 'Too many requests from this IP, please try again later.',
+    standardHeaders: true,
+    legacyHeaders: false,
+});
 
 app.use(express.static('public'));
 
+
 const db = mysql.createPool({
-    host: process.env.MYSQLHOST,
-    user: process.env.MYSQLUSER,
-    password: process.env.MYSQLPASSWORD,
-    database: process.env.MYSQLDATABASE,
-    port: process.env.MYSQLPORT, // optional, defaults to 3306
+    host: process.env.DATABASE_HOST,
+    user: process.env.DATABASE_USER,
+    password: process.env.DATABASE_PASSWORD,
+    database: process.env.DATABASE,
     waitForConnections: true,
     connectionLimit: 10,
     queueLimit: 0,
     multipleStatements: true
 });
 
+console.log("MySQL pool created and ready.");
+
 module.exports = db;
+
+app.get("/",(req,res)=>{
+    res.sendFile(__dirname+"/public/landing.html")
+})
 
 // Display the login page
 app.get('/loginPage', (req, res) => {
@@ -66,36 +85,27 @@ function requireLogin(req, res, next) {
 
 
 app.post('/signup', (req, res) => {
-  const { username, Email, password } = req.body;
-  
-  bcrypt.hash(password, 10, (err, hash) => {
-    if (err) {
-      // Handle hashing error properly
-      return res.status(500).send('Error hashing password');
-    }
-
-    const query1 = 'SELECT * FROM usercredentials WHERE user=?';
-    db.query(query1, [username], (err, result) => {
-      if (err) {
-        return res.status(500).send('Database error');
-      }
-
-      if (result.length > 0) {
-        return res.status(409).redirect('/loginPage?err=User already exists!');
-      } else {
-        const query = 'INSERT INTO usercredentials (user, email, password) VALUES (?, ?, ?)';
-        db.query(query, [username, Email, hash], (err, result) => {
-          if (err) {
-            return res.status(500).send('Error inserting user');
-          }
-          req.session.userId = username;
-          return res.status(200).redirect('/details');
-        });
-      }
+    const { username, Email, password } = req.body;
+    bcrypt.hash(password, 10, (err, hash) => {
+        if (err) throw err;
+        const query1='SELECT * FROM usercredentials WHERE user=?'
+        db.query(query1,[username],(err,result)=>{
+            if(err) throw err;
+            if(result.length>0){
+                res.status(409).redirect('/loginPage?err=User already exists!');
+            } else{
+                const query = 'INSERT INTO usercredentials (user, email, password) VALUES (?, ?, ?)';
+                db.query(query, [username, Email, hash], (err, result) => {
+                    if (err){
+                        throw err
+                    };
+                    req.session.userId = username;
+                    res.status(200).redirect('/details')
+                });
+            }
+        })
     });
-  });
 });
-
 
 app.post('/login', (req, res) => {
     const {usernamelog,passwordlog}=req.body;
@@ -153,7 +163,7 @@ app.post('/login', (req, res) => {
 
 //LOGOUT
 
-app.get('/logout',(req,res)=>{
+app.get('/logout',requireLogin,(req,res)=>{
     req.session.destroy(err=>{
         if(err){
             return res.send(`There was an error while logging out: ${err}`)
@@ -169,24 +179,24 @@ app.get('/details',(req,res)=>{
     res.sendFile(__dirname+'/public/fillcreds.html')
 })
 
-app.post('/details', (req, res) => {
-  const { stW, glW, ress, Gender } = req.body;
-  const id = req.session.userId;
-  const newress=ress.split(" ");
-  const ress1=Number(newress[0])
-  const query = 'UPDATE usercredentials SET calGoal=?, enterData=true, startW=?, goalW=?, todayBw=?, gender=? WHERE user=?';
-    
-  db.query(query, [ress1, stW, glW, stW, Gender, id], (err, result) => {
-    if (err) {
-      return res.status(500).send(`There was an error: ${err}`);
-    }
-    res.status(200).redirect('/home');
-  });
-});
+app.post('/details',(req,res)=>{
+    const {stW,glW,ress,Gender}=req.body;
+    const id=req.session.userId
+    console.log(ress,typeof(ress))
+    const newress=ress.split(" ");
+    const ress1=Number(newress[0])
+    console.log(ress1)
+    const query='UPDATE usercredentials SET calGoal=?, enterData=true, startW=? , goalW=? , todayBw=?,gender=? WHERE user=?';
+    db.query(query, [ress1,stW,glW,stW,Gender,id], (err, result) => {
+        if (err) res.status(500).send(`There wa an error ${err}`);
+        res.status(200).redirect('/home')
+    });
+
+})
 
 //CHANGE PASSWORD
 
-app.post('/changepass',(req,res)=>{
+app.post('/changepass',requireLogin,(req,res)=>{
     const {passinp,passinpnew}=req.body;
     const user=req.session.userId;
     const query='SELECT * FROM usercredentials WHERE user=?';
@@ -213,7 +223,7 @@ app.post('/changepass',(req,res)=>{
     });
 })
 
-app.post('/deleteAcc',(req,res)=>{
+app.post('/deleteAcc',requireLogin,(req,res)=>{
     const user=req.session.userId;
     const query='DELETE FROM usercredentials WHERE user=?;'
     db.query(query,[user],(err,result)=>{
@@ -234,7 +244,7 @@ app.get('/home',requireLogin,(req,res)=>{
     res.sendFile(__dirname+'/public/mainpage.html')
 })
 
-app.get('/data',(req,res)=>{
+app.get('/data',requireLogin,(req,res)=>{
     const query="SELECT * FROM usercredentials WHERE user=?"
     const id=req.session.userId
     db.query(query,[id],(err,result)=>{
@@ -250,7 +260,7 @@ app.get('/data',(req,res)=>{
     })
 })
 
-app.get('/meals',(req,res)=>{
+app.get('/meals',requireLogin,(req,res)=>{
     const user=req.session.userId;
     const query='SELECT * FROM usermeals WHERE user=?';
     db.query(query,[user],(err,result)=>{
@@ -264,7 +274,7 @@ app.get('/meals',(req,res)=>{
         }
     })
 })
-app.get('/exercise',(req,res)=>{
+app.get('/exercise',requireLogin,(req,res)=>{
     const user=req.session.userId;
     const query='SELECT * FROM userexercise WHERE user=?'
     db.query(query,[user],(err,result)=>{
@@ -285,7 +295,7 @@ app.get('/diet',requireLogin,(req,res)=>{
     res.sendFile(__dirname+'/public/addmeals.html')
 })
 
-app.post('/addToCals',(req,res)=>{
+app.post('/addToCals',requireLogin,(req,res)=>{
 
     let day=new Date().getDay();
     if(day===0)
@@ -327,7 +337,7 @@ app.post('/addToCals',(req,res)=>{
 
 })
 
-app.post('/addExercise',(req,res)=>{
+app.post('/addExercise',requireLogin,(req,res)=>{
     const {burnCal,nrSet,nrMin,exName,setNrCurr,calBurnCurr,exType}=req.body;
     let sets=Number(nrSet)+Number(setNrCurr);
     let mins=Number(nrMin)+Number(setNrCurr);
@@ -430,7 +440,7 @@ app.post('/deleteimg',(req,res)=>{
 })
 
 // set current weight
-app.post('/getCurrWei',(req,res)=>{
+app.post('/getCurrWei',requireLogin,(req,res)=>{
     let day=new Date().getDay();
     if(day===0)
         day=6;
@@ -450,7 +460,7 @@ app.post('/getCurrWei',(req,res)=>{
 })
 
 //POST GOALS
-app.post('/goalsPost',(req,res)=>{
+app.post('/goalsPost',requireLogin,(req,res)=>{
     const user=req.session.userId;
     const {stW,glW,cal,dietType}=req.body;
     const query='UPDATE usercredentials SET startW=?, goalW=? , todayBw=?, calGoal=?, dietType=? WHERE user=?'
@@ -460,7 +470,7 @@ app.post('/goalsPost',(req,res)=>{
     })
 })
 
-app.post('/postPlan',(req,res)=>{
+app.post('/postPlan',requireLogin,(req,res)=>{
     const {wrkId,daysId}=req.body;
     const user=req.session.userId
     const query='UPDATE usercredentials SET wrkId=?, wrkDays=? WHERE user=?'
@@ -471,7 +481,7 @@ app.post('/postPlan',(req,res)=>{
 })
 
 //Friend requests
-app.get('/getfriends',(req,res)=>{
+app.get('/getfriends',requireLogin,(req,res)=>{
     const user=req.session.userId
     const query="SELECT * FROM friends WHERE (requester=? OR reciver=?) AND status='accepted'"
     db.query(query,[user,user],(err,result)=>{
@@ -487,7 +497,7 @@ app.get('/getfriends',(req,res)=>{
     })
 })
 
-app.get('/getrequests',(req,res)=>{
+app.get('/getrequests',requireLogin,(req,res)=>{
     const user=req.session.userId;
     const query="SELECT * FROM friends WHERE reciver=? AND status='pending'"
     db.query(query,[user],(err,result)=>{
@@ -503,7 +513,7 @@ app.get('/getrequests',(req,res)=>{
     })
 })
 
-app.post('/sendreq',(req,res)=>{
+app.post('/sendreq',requireLogin,(req,res)=>{
     const user=req.session.userId;
     const {reciverAdd}=req.body;
     const query=`INSERT INTO friends (requester,reciver) VALUES (?,?)`
@@ -536,7 +546,7 @@ app.post('/sendreq',(req,res)=>{
     })
 })
 
-app.post('/acceptreq',(req,res)=>{
+app.post('/acceptreq',requireLogin,(req,res)=>{
     const user=req.session.userId;
     const {reqName}=req.body;
     if(req.body.hasOwnProperty("acc")){
@@ -557,7 +567,7 @@ app.post('/acceptreq',(req,res)=>{
    
 })
 
-app.post('/deletefriend',(req,res)=>{
+app.post('/deletefriend',requireLogin,(req,res)=>{
     const user=req.session.userId
     const {delName}=req.body;
     const query=`DELETE FROM friends WHERE (reciver=? AND requester=?) OR (reciver=? AND requester=?);
@@ -573,7 +583,7 @@ app.get('/friendprf',requireLogin,(req,res)=>{
     req.session.frV=req.query.name;
     res.sendFile(__dirname+'/public/friendprf.html')
 })
-app.get('/getFrData',(req,res)=>{
+app.get('/getFrData',requireLogin,(req,res)=>{
     const frName=req.session.frV;
     const user=req.session.userId;
     const query='SELECT user,image,calGoal,startW,goalW,todayBw,mon,tue,wed,thu,fri,sat,sun,cmon,ctue,cwed,cthu,cfri,csat,csun,wrkId,wrkDays,nrFriends,dietType FROM usercredentials WHERE user=?'
@@ -589,7 +599,7 @@ app.get('/getFrData',(req,res)=>{
 })
 
 
-app.post('/syncWrk',(req,res)=>{
+app.post('/syncWrk',requireLogin,(req,res)=>{
     const user=req.session.userId;
     const {frName}=req.body;
     const query='SELECT wrkId,wrkDays FROM usercredentials WHERE user=?';
@@ -604,7 +614,7 @@ app.post('/syncWrk',(req,res)=>{
     })
 })
 
-app.get('/mutualFrs',(req,res)=>{
+app.get('/mutualFrs',requireLogin,(req,res)=>{
     const user=req.session.userId;
     const frName=req.session.frV
     const query=`SELECT * FROM friends WHERE (requester=? OR reciver=?);
@@ -616,7 +626,7 @@ app.get('/mutualFrs',(req,res)=>{
     })
 })
 
-app.post('/getMessage',(req,res)=>{
+app.post('/getMessage',requireLogin,(req,res)=>{
     const {usr1,usr2}=req.body;
     const query='SELECT * FROM messages WHERE (sender=? AND reciver=?) OR (sender=? AND reciver=?) ORDER BY id ASC'
     db.query(query,[usr1,usr2,usr2,usr1],(err,result)=>{
@@ -625,7 +635,7 @@ app.post('/getMessage',(req,res)=>{
     }) 
 })
 
-app.post('/addMessage',(req,res)=>{
+app.post('/addMessage',requireLogin,(req,res)=>{
     const {sender,reciver,message}=req.body;
     const query='INSERT INTO messages (sender,reciver,message) VALUES (?,?,?)';
     db.query(query,[sender,reciver,message],(err,result)=>{
@@ -710,6 +720,6 @@ server.listen(port, () => {
     console.log(`Server running at http://localhost:${port}`);
 });
 
-
+ 
 //real time messaging
 
