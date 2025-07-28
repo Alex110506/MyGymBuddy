@@ -782,6 +782,7 @@ svg{
    .main{
       grid-template-columns: 10vw 1fr;
       overflow: auto;
+      overflow-x: hidden;
    }
    .meal-page{
       display: grid;
