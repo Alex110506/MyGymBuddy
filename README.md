@@ -52,6 +52,16 @@ Make sure you have these installed:
 - [Node.js](https://nodejs.org/)
 - [XAMPP](https://www.apachefriends.org/)
 
+### Environment variables for local use
+
+(This is an example)
+
+DATABASE=useracc
+DATABASE_HOST=localhost
+DATABASE_USER=root
+DATABASE_PASSWORD=
+SESSION_SECRET=Abc123@
+
 ### Installation
 
 ```bash
