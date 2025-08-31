@@ -56,11 +56,11 @@ Make sure you have these installed:
 
 (This is an example)
 
-DATABASE=useracc
-DATABASE_HOST=localhost
-DATABASE_USER=root
-DATABASE_PASSWORD=
-SESSION_SECRET=Abc123@
+- DATABASE=useracc
+- DATABASE_HOST=localhost
+- DATABASE_USER=root
+- DATABASE_PASSWORD=
+- SESSION_SECRET=Abc123@
 
 ### Installation
 
